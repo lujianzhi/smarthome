@@ -1,4 +1,4 @@
-package com.smarthome.smarthome;
+package com.smarthome.ui;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
