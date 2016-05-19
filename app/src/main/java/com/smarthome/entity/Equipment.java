@@ -1,136 +1,144 @@
 package com.smarthome.entity;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Equipment implements Serializable {
+public class Equipment implements Parcelable {
 
-	private static final long serialVersionUID = -6377533676968169700L;
-	private Integer id; // id
-	private String name; // 设备名称
-	private Double value; // 值
-	private Double highValue; // 阀值上限
-	private Double lowValue; // 阀值下限
-	private Integer state; // 开关状态 0:关 1：开
-	private String image; // 图片
-	private String eqComment;// 备注
-	private Integer isRemind; // 是否提醒 0:不提醒 1:提醒
+    private int id; // id
+    private String name; // 设备名称
+    private double value; // 值
+    private double highValue; // 阀值上限
+    private double lowValue; // 阀值下限
+    private int state; // 开关状态 0:关 1：开
+    private String image; // 图片
+    private String eqComment;// 备注
+    private int isRemind; // 是否提醒 0:不提醒 1:提醒
 
-	public void turnOn() {
-		this.state = 1;
-	}
+    protected Equipment(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        value = in.readDouble();
+        highValue = in.readDouble();
+        lowValue = in.readDouble();
+        state = in.readInt();
+        image = in.readString();
+        eqComment = in.readString();
+        isRemind = in.readInt();
+    }
 
-	public void turnOff() {
-		this.state = 0;
-	}
+    public static final Creator<Equipment> CREATOR = new Creator<Equipment>() {
+        @Override
+        public Equipment createFromParcel(Parcel in) {
+            return new Equipment(in);
+        }
 
-	public Integer getId() {
-		return id;
-	}
+        @Override
+        public Equipment[] newArray(int size) {
+            return new Equipment[size];
+        }
+    };
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void turnOn() {
+        this.state = 1;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void turnOff() {
+        this.state = 0;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public Double getValue() {
-		return value;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setValue(Double value) {
-		this.value = value;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Double getHighValue() {
-		return highValue;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setHighValue(Double highValue) {
-		this.highValue = highValue;
-	}
+    public double getValue() {
+        return value;
+    }
 
-	public Double getLowValue() {
-		return lowValue;
-	}
+    public void setValue(double value) {
+        this.value = value;
+    }
 
-	public void setLowValue(Double lowValue) {
-		this.lowValue = lowValue;
-	}
+    public double getHighValue() {
+        return highValue;
+    }
 
-	public Integer getState() {
-		return state;
-	}
+    public void setHighValue(double highValue) {
+        this.highValue = highValue;
+    }
 
-	public void setState(Integer state) {
-		this.state = state;
-	}
+    public double getLowValue() {
+        return lowValue;
+    }
 
-	public String getImage() {
-		return image;
-	}
+    public void setLowValue(double lowValue) {
+        this.lowValue = lowValue;
+    }
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+    public int getState() {
+        return state;
+    }
 
-	public String getEqComment() {
-		return eqComment;
-	}
+    public void setState(int state) {
+        this.state = state;
+    }
 
-	public void setEqComment(String eqComment) {
-		this.eqComment = eqComment;
-	}
+    public String getImage() {
+        return image;
+    }
 
-	public Integer getIsRemind() {
-		return isRemind;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
-	public void setIsRemind(Integer isRemind) {
-		this.isRemind = isRemind;
-	}
+    public String getEqComment() {
+        return eqComment;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    public void setEqComment(String eqComment) {
+        this.eqComment = eqComment;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Equipment other = (Equipment) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
+    public int getIsRemind() {
+        return isRemind;
+    }
 
-	public Equipment() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public void setIsRemind(int isRemind) {
+        this.isRemind = isRemind;
+    }
 
-	@Override
-	public String toString() {
-		return "Equipment [id=" + id + ", name=" + name + ", value=" + value
-				+ ", highValue=" + highValue + ", lowValue=" + lowValue
-				+ ", state=" + state + ", image=" + image + ", eqComment="
-				+ eqComment + ", isRemind=" + isRemind + "]";
-	}
+    public Equipment() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeDouble(value);
+        dest.writeDouble(highValue);
+        dest.writeDouble(lowValue);
+        dest.writeInt(state);
+        dest.writeString(image);
+        dest.writeString(eqComment);
+        dest.writeInt(isRemind);
+    }
 }

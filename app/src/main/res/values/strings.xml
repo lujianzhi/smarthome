@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">SmartHome</string>
+
+    <!-- 网络相关 -->
+    <string name="json_code_error">json_code格式不正确</string>
+    <string name="json_message_error">json_message格式不正确</string>
+
+    <!-- 注册登陆-->
+    <string name="input_name">输入用户名</string>
+    <string name="input_phoneNumber">输入手机号</string>
+    <string name="input_password">输入密码</string>
+    <string name="input_password_again">再次输入密码</string>
+    <string name="button_register">注册</string>
+    <string name="button_login">登陆</string>
+
+    <!-- top-->
+    <string name="top_current_title">当前页标题</string>
+
+    <!--场景-->
+    <string name="scene">场景</string>
+
+    <!--警告信息-->
+    <string name="warn">警告信息</string>
+
+    <!--日志消息-->
+    <string name="log">日志</string>
+    <string name="message">消息</string>
+    <string name="log_message">日志消息</string>
+
+    <!--天气-->
+    <string name="weather">室内温度:\n13℃-20℃</string>
+
+    <!--时间-->
+    <string name="log_button_start_time">起始时间</string>
+    <string name="log_button_end_time">结束时间</string>
+
+    <!--设备-->
+    <string name="equipment">设备</string>
+    <string name="equipment_detail">设备详情</string>
+    <string name="change_status">状态及更改状态</string>
+    <string name="equipment_detail_time">13:15</string>
+    <string name="equipment_detail_message">门窗打开</string>
+    <string name="equipment_status_on">ON</string>
+    <string name="equipment_status_off">OFF</string>
+
+    <!--对话框-->
+    <string name="dialog_button_cancel">取消</string>
+    <string name="dialog_button_confirm">确定</string>
+    <string name="operating">正在操作\.\.\.</string>
+
 </resources>

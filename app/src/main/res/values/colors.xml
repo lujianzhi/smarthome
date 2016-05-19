@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#009688</color>
+    <color name="colorAccent">#26a69a</color>
+
+    <!--字体颜色-->
+    <color name="text_top_title_color">#e0f2f1</color>
+    <color name="text_title_color">#009688</color>
+    <color name="text_main_color">#80cbc4</color>
+    <color name="text_tips_color">#26a69a</color>
+
+
+    <!-- 按钮 -->
+    <color name="button_normal_color">#009688</color>
+    <color name="button_pressed_color">#00796b</color>
+    <color name="button_text_color">#e0f2f1</color>
+
+    <!-- 输入框-->
+    <color name="edit_text_divider_normal">#4db6ac</color>
+    <color name="edit_text_divider_focused">#009688</color>
+
+    <!--对话框-->
+    <color name="dialog_background">#ffffff</color>
+
+    <!--分割线-->
+    <color name="divider_background">#26a69a</color>
+
 </resources>

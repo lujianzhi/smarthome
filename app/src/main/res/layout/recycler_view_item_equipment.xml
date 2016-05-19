@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:padding="@dimen/activity_padding">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_inner_margin"
+        android:layout_marginStart="@dimen/activity_inner_margin"
+        android:text="@string/equipment"
+        android:textColor="@color/text_main_color"
+        android:textSize="@dimen/text_main_size"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_inner_margin_40"
+        android:layout_marginStart="@dimen/activity_inner_margin_40"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/equipment_status_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equipment_status_on"
+            android:textColor="@color/text_tips_color"
+            android:textSize="@dimen/text_tips_size"/>
+
+        <RadioButton
+            android:id="@+id/equipment_status_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_inner_margin"
+            android:layout_marginStart="@dimen/activity_inner_margin"
+            android:text="@string/equipment_status_off"
+            android:textColor="@color/text_tips_color"
+            android:textSize="@dimen/text_tips_size"/>
+
+    </RadioGroup>
+
+</LinearLayout>

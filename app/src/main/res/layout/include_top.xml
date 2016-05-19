@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/top_height"
+                android:background="@color/colorPrimary"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/top_padding_left"
+                android:paddingLeft="@dimen/top_padding_left"
+                android:paddingRight="@dimen/top_padding_right"
+                android:paddingStart="@dimen/top_padding_right">
+
+    <TextView
+        android:id="@+id/top_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/top_current_title"
+        android:textColor="@color/text_top_title_color"
+        android:textSize="@dimen/text_top_title_size"/>
+
+</RelativeLayout>

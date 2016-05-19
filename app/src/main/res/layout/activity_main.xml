@@ -1,70 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/id"
-        android:hint="输入id"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
+    <include
+        android:id="@+id/top"
+        layout="@layout/include_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_height"
+        />
 
-    <EditText
-        android:id="@+id/name"
-        android:hint="输入设备名称"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/value"
-        android:hint="输入值"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/highValue"
-        android:hint="输入阀值上限"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/lowValue"
-        android:hint="输入阀值下限"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/state"
-        android:hint="开关状态 0:关 1：开"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/image"
-        android:hint="图片"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/eqComment"
-        android:hint="备注"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/isRemind"
-        android:hint=" 是否提醒 0:不提醒 1:提醒"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/submit"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="提交"/>
+        android:orientation="vertical"
+        android:padding="@dimen/activity_padding">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:layout_marginRight="@dimen/activity_margin"
+                android:layout_weight="0.6"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_inner_margin"
+                    android:text="@string/scene"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="@dimen/text_title_size"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/scene_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginBottom="@dimen/activity_inner_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_inner_margin"
+                        android:text="@string/warn"
+                        android:textColor="@color/text_title_color"
+                        android:textSize="@dimen/text_title_size"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/warn_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_launcher"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_inner_margin"
+                    android:text="@string/log_message"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="@dimen/text_title_size"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/log_message_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="@string/weather"
+                android:textColor="@color/text_title_color"
+                android:textSize="@dimen/text_title_size"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

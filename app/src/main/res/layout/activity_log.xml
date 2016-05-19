@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/include_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_height"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.gc.materialdesign.views.ButtonRectangle
+                android:id="@+id/start_time"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/component_height"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:layout_marginRight="@dimen/activity_margin"
+                android:layout_weight="0.5"
+                android:background="@color/button_normal_color"
+                android:text="@string/log_button_start_time"
+                android:textColor="@color/button_text_color"/>
+
+            <com.gc.materialdesign.views.ButtonRectangle
+                android:id="@+id/end_time"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/component_height"
+                android:layout_weight="0.5"
+                android:background="@color/button_normal_color"
+                android:text="@string/log_button_end_time"
+                android:textColor="@color/button_text_color"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_inner_margin"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/scene"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/component_height"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:layout_marginRight="@dimen/activity_margin"
+                android:layout_weight="0.5"
+                android:drawableBottom="@drawable/selector_edit_text"
+                android:drawablePadding="@dimen/edit_text_drawable_padding"
+                android:hint="@string/scene"
+                android:textColor="@color/button_text_color"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/equipment"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/component_height"
+                android:layout_weight="0.5"
+                android:drawableBottom="@drawable/selector_edit_text"
+                android:drawablePadding="@dimen/edit_text_drawable_padding"
+                android:hint="@string/equipment"
+                android:textColor="@color/button_text_color"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/log_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_inner_margin"/>
+
+    </LinearLayout>
+
+</LinearLayout>
