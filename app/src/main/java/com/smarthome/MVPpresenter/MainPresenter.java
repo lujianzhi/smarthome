@@ -4,6 +4,8 @@ import com.smarthome.AsyncTask.GetOperationLogListTask;
 import com.smarthome.AsyncTask.GetSceneListTask;
 import com.smarthome.MVPContract.MainMVPContract;
 import com.smarthome.utils.LogUtils;
+import com.smarthome.utils.MyJsonStrUtils;
+import com.smarthome.utils.ToastUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import okhttp3.Call;
@@ -83,8 +85,9 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
                     GetOperationLogListTask getOperationLogListTask = new GetOperationLogListTask(mainModel, mainView);
                     getOperationLogListTask.setNotifyTag(1);
                     getOperationLogListTask.execute(response);
+                } else {
+                    ToastUtils.showShortToast(MyJsonStrUtils.getMessage(response));
                 }
-                mainView.stopLoading();
             }
         });
     }

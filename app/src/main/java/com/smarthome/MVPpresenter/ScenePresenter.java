@@ -3,6 +3,8 @@ package com.smarthome.MVPpresenter;
 import com.smarthome.AsyncTask.GetSceneListTask;
 import com.smarthome.MVPContract.SceneMVPContract;
 import com.smarthome.utils.LogUtils;
+import com.smarthome.utils.MyJsonStrUtils;
+import com.smarthome.utils.ToastUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import okhttp3.Call;
@@ -34,9 +36,12 @@ public class ScenePresenter implements SceneMVPContract.IScenePresenter {
             @Override
             public void onResponse(String response) {
                 LogUtils.i(TAG, response);
-                GetSceneListTask getSceneListTask = new GetSceneListTask(sceneModel, sceneView);
-                getSceneListTask.execute(response);
-                sceneView.stopLoading();
+                if (1 == MyJsonStrUtils.getCode(response)) {
+                    GetSceneListTask getSceneListTask = new GetSceneListTask(sceneModel, sceneView);
+                    getSceneListTask.execute(response);
+                } else {
+                    ToastUtils.showShortToast(MyJsonStrUtils.getMessage(response));
+                }
             }
         });
     }

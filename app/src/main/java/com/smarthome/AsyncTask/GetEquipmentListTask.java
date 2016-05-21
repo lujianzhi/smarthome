@@ -32,5 +32,6 @@ public class GetEquipmentListTask extends AsyncTask<String, Void, List<Equipment
     @Override
     protected void onPostExecute(List<Equipment> equipments) {
         equipmentView.notifyDataChanged();
+        equipmentView.stopLoading();
     }
 }

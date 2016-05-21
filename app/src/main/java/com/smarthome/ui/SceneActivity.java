@@ -96,7 +96,6 @@ public class SceneActivity extends BaseActivity implements SceneMVPContract.ISce
 
     @Override
     public void notifyDataChanged() {
-
     }
 
     @Override

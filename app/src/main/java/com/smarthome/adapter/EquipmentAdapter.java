@@ -1,5 +1,8 @@
 package com.smarthome.adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import com.smarthome.MVPContract.EquipmentMVPContract;
 import com.smarthome.R;
 import com.smarthome.entity.Equipment;
+import com.smarthome.ui.EquipmentDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +24,12 @@ import java.util.List;
  */
 public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.MyViewHolder> {
 
+    private Context context;
     private List<Equipment> equipmentList = new ArrayList<>();
     private EquipmentMVPContract.IEquipmentPresenter equipmentPresenter;
 
-    public EquipmentAdapter(EquipmentMVPContract.IEquipmentPresenter equipmentPresenter) {
+    public EquipmentAdapter(Context context, EquipmentMVPContract.IEquipmentPresenter equipmentPresenter) {
+        this.context = context;
         this.equipmentPresenter = equipmentPresenter;
     }
 
@@ -61,6 +67,20 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.MyVi
                         break;
                 }
                 equipmentPresenter.changeStatus(String.valueOf(equipment.getId()), status, holder.getAdapterPosition());
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EquipmentDetailActivity.class);
+                Bundle data = new Bundle();
+                data.putString(EquipmentDetailActivity.EQUIPMENT_NAME, equipment.getName());
+                data.putString(EquipmentDetailActivity.EQUIPMENT_ID, String.valueOf(equipment.getId()));
+                data.putString(EquipmentDetailActivity.EQUIPMENT_STATUS, String.valueOf(equipment.getState()));
+                data.putString(EquipmentDetailActivity.SCENE_ID, String.valueOf(equipment.getSceneId()));
+                intent.putExtras(data);
+                context.startActivity(intent);
             }
         });
 

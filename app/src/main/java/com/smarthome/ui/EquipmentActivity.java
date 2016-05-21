@@ -39,7 +39,7 @@ public class EquipmentActivity extends BaseActivity implements EquipmentMVPContr
     protected void initViews() {
         sceneNameTV.setText(sceneName);
         equipmentPresenter.requestEquipmentList(sceneId, "20", "1");
-        equipmentAdapter = new EquipmentAdapter(equipmentPresenter);
+        equipmentAdapter = new EquipmentAdapter(this, equipmentPresenter);
         equipmentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         equipmentRecyclerView.setAdapter(equipmentAdapter);
     }

@@ -5,6 +5,8 @@ import com.smarthome.AsyncTask.StatusChangeTask;
 import com.smarthome.MVPContract.EquipmentMVPContract;
 import com.smarthome.entity.Equipment;
 import com.smarthome.utils.LogUtils;
+import com.smarthome.utils.MyJsonStrUtils;
+import com.smarthome.utils.ToastUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.List;
@@ -49,9 +51,12 @@ public class EquipmentPresenter implements EquipmentMVPContract.IEquipmentPresen
             @Override
             public void onResponse(String response) {
                 LogUtils.i(TAG, response);
-                GetEquipmentListTask getEquipmentListTask = new GetEquipmentListTask(equipmentModel, equipmentView);
-                getEquipmentListTask.execute(response);
-                equipmentView.stopLoading();
+                if (1 == MyJsonStrUtils.getCode(response)) {
+                    GetEquipmentListTask getEquipmentListTask = new GetEquipmentListTask(equipmentModel, equipmentView);
+                    getEquipmentListTask.execute(response);
+                } else {
+                    ToastUtils.showShortToast(MyJsonStrUtils.getMessage(response));
+                }
             }
         });
     }

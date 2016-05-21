@@ -18,7 +18,7 @@ public interface IBaseView {
     void stopLoading();
 
     /**
-     * 数据更新
+     * 界面只有单个列表时数据更新
      */
     void notifyDataChanged();
 

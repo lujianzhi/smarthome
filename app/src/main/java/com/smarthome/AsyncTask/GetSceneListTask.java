@@ -43,5 +43,6 @@ public class GetSceneListTask extends AsyncTask<String, Void, List<Scene>> {
         } else {
             ((SceneMVPContract.ISceneView) baseView).setSceneList(scenes);
         }
+        baseView.stopLoading();
     }
 }
