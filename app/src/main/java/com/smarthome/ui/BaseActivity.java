@@ -58,18 +58,20 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected void showProgressDialog() {
         if (dialog == null) {
             dialog = new MyProgressDialog(this);
-        }
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
-        if (!dialog.isShowing()) {
+            dialog.setCancelable(false);
+            dialog.setCanceledOnTouchOutside(false);
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
             dialog.show();
         }
     }
 
     protected void disMissProgressDialog() {
-        if (dialog != null) {
+        if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
+        dialog = null;
     }
 
     /**

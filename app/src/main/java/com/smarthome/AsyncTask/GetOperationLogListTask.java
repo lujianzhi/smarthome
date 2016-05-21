@@ -3,6 +3,7 @@ package com.smarthome.AsyncTask;
 import android.os.AsyncTask;
 
 import com.smarthome.MVPContract.EquipmentDetailMVPContract;
+import com.smarthome.MVPContract.LogMVPContract;
 import com.smarthome.MVPContract.MainMVPContract;
 import com.smarthome.MVPmodel.IBaseModel;
 import com.smarthome.MVPview.IBaseView;
@@ -35,6 +36,9 @@ public class GetOperationLogListTask extends AsyncTask<String, Void, List<Operat
         if (baseModel instanceof MainMVPContract.IMainModel) {
             ((MainMVPContract.IMainModel) baseModel).parseWarnInfoList(params[0]);
             return ((MainMVPContract.IMainModel) baseModel).getWarnInfoList();
+        } else if (baseModel instanceof LogMVPContract.ILogModel) {
+            ((LogMVPContract.ILogModel) baseModel).parseOperationLogList(params[0]);
+            return ((LogMVPContract.ILogModel) baseModel).getOperationLogList();
         } else {
             ((EquipmentDetailMVPContract.IEquipmentDetailModel) baseModel).parserEquipmentDetailList(params[0]);
             return ((EquipmentDetailMVPContract.IEquipmentDetailModel) baseModel).getOperationLogList();
@@ -53,10 +57,11 @@ public class GetOperationLogListTask extends AsyncTask<String, Void, List<Operat
             } else if (notifyTag == 0) {
                 ((MainMVPContract.IMainView) baseView).setLogInfoList(operationLogs);
             }
+        } else if (baseView instanceof LogMVPContract.ILogView) {
+            ((LogMVPContract.ILogView) baseView).setOperationLogList(operationLogs);
         } else {
             baseView.notifyDataChanged();
         }
         baseView.stopLoading();
-        this.cancel(false);
     }
 }

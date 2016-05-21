@@ -34,6 +34,7 @@
     <!--时间-->
     <string name="log_button_start_time">起始时间</string>
     <string name="log_button_end_time">结束时间</string>
+    <string name="judge_time">结束不能早于起始时间</string>
 
     <!--设备-->
     <string name="equipment">设备</string>
@@ -65,5 +66,8 @@
     <string name="canting">餐厅</string>
     <string name="qita">其他</string>
     <string name="input_warn">请填写相应信息</string>
+
+    <!--搜索-->
+    <string name="search">开始搜索</string>
 
 </resources>

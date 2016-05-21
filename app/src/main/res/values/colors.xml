@@ -10,7 +10,6 @@
     <color name="text_main_color">#80cbc4</color>
     <color name="text_tips_color">#26a69a</color>
 
-
     <!-- 按钮 -->
     <color name="button_normal_color">#009688</color>
     <color name="button_pressed_color">#00796b</color>

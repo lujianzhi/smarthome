@@ -34,6 +34,10 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
     RecyclerView logMessageRecyclerView;
     @BindView(R.id.more_scene)
     TextView moreScene;
+    @BindView(R.id.warn)
+    TextView warn;
+    @BindView(R.id.log)
+    TextView log;
 
     private MainMVPContract.IMainPresenter mainPresenter;
 
@@ -67,6 +71,9 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
         logMessageRecyclerView.setAdapter(logMessageAdapter);
 
         moreScene.setOnClickListener(this);
+        warn.setOnClickListener(this);
+        log.setOnClickListener(this);
+
     }
 
     @Override
@@ -90,6 +97,12 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
         switch (v.getId()) {
             case R.id.more_scene:
                 startActivity(new Intent(this, SceneActivity.class));
+                break;
+            case R.id.warn:
+                startActivity(new Intent(this, MessageActivity.class));
+                break;
+            case R.id.log:
+                startActivity(new Intent(this, LogActivity.class));
                 break;
         }
     }

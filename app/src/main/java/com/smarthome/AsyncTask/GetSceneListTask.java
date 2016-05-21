@@ -2,6 +2,7 @@ package com.smarthome.AsyncTask;
 
 import android.os.AsyncTask;
 
+import com.smarthome.MVPContract.LogMVPContract;
 import com.smarthome.MVPContract.MainMVPContract;
 import com.smarthome.MVPContract.SceneMVPContract;
 import com.smarthome.MVPmodel.IBaseModel;
@@ -30,9 +31,12 @@ public class GetSceneListTask extends AsyncTask<String, Void, List<Scene>> {
         if (baseModel instanceof MainMVPContract.IMainModel) {
             ((MainMVPContract.IMainModel) baseModel).parseSceneList(params[0]);
             return ((MainMVPContract.IMainModel) baseModel).getSceneList();
-        } else {
+        } else if (baseModel instanceof SceneMVPContract.ISceneModel) {
             ((SceneMVPContract.ISceneModel) baseModel).parseSceneList(params[0]);
             return ((SceneMVPContract.ISceneModel) baseModel).getSceneList();
+        } else {
+            ((LogMVPContract.ILogModel) baseModel).parserAllScene(params[0]);
+            return ((LogMVPContract.ILogModel) baseModel).getAllScene();
         }
     }
 
@@ -40,8 +44,10 @@ public class GetSceneListTask extends AsyncTask<String, Void, List<Scene>> {
     protected void onPostExecute(List<Scene> scenes) {
         if (baseView instanceof MainMVPContract.IMainView) {
             ((MainMVPContract.IMainView) baseView).setSceneList(scenes);
-        } else {
+        } else if (baseView instanceof SceneMVPContract.ISceneModel) {
             ((SceneMVPContract.ISceneView) baseView).setSceneList(scenes);
+        } else {
+            ((LogMVPContract.ILogView) baseView).setSceneList(scenes);
         }
         baseView.stopLoading();
     }

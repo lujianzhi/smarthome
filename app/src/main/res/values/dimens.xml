@@ -27,7 +27,7 @@
     <!-- 按钮 -->
     <dimen name="button_radius">4dp</dimen>
     <dimen name="button_width">100dp</dimen>
-    <dimen name="button_height">60dp</dimen>
+    <dimen name="button_height">30dp</dimen>
     <dimen name="button_margin_top">10dp</dimen>
     <dimen name="button_margin_left">10dp</dimen>
 
