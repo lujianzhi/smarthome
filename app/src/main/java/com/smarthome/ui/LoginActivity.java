@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.smarthome.MVPContract.LoginMVPContract;
-import com.smarthome.R;
 import com.smarthome.MVPmodel.LoginModel;
 import com.smarthome.MVPpresenter.LoginPresenter;
+import com.smarthome.R;
 import com.smarthome.utils.ToastUtils;
 
 import butterknife.BindView;
@@ -21,8 +21,6 @@ public class LoginActivity extends BaseActivity implements LoginMVPContract.ILog
     TextView register;
     @BindView(R.id.login)
     ButtonRectangle login;
-    @BindView(R.id.user_phone)
-    EditText user_phone;
     @BindView(R.id.user_name)
     EditText user_name;
     @BindView(R.id.user_password)
@@ -89,7 +87,7 @@ public class LoginActivity extends BaseActivity implements LoginMVPContract.ILog
 
     @Override
     public String getUserName() {
-        return user_phone.getText().toString();
+        return user_name.getText().toString();
     }
 
     @Override

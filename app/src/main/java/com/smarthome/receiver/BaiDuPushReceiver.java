@@ -5,7 +5,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.baidu.android.pushservice.PushMessageReceiver;
+import com.smarthome.config.NetConfig;
 import com.smarthome.utils.ToastUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,6 +16,8 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import okhttp3.Call;
 
 /*
  * Push消息处理receiver。请编写您需要的回调函数， 一般来说： onBind是必须的，用来处理startWork返回值；
@@ -63,6 +68,20 @@ public class BaiDuPushReceiver extends PushMessageReceiver {
         }
         // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
         updateContent(context, responseString);
+
+        OkHttpUtils.post().url(NetConfig.LOCAL + "login_savePublish.action")
+                .addParams("userId", userId)
+                .addParams("channelId", channelId)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e) {
+            }
+
+            @Override
+            public void onResponse(String response) {
+            }
+        });
+
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.smarthome.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 
@@ -76,6 +77,12 @@ public class RegisterActivity extends BaseActivity implements RegisterMVPContrac
     }
 
     @Override
+    public void backToLogin() {
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
+    }
+
+    @Override
     public void startLoading() {
         showProgressDialog();
     }
@@ -87,7 +94,6 @@ public class RegisterActivity extends BaseActivity implements RegisterMVPContrac
 
     @Override
     public void notifyDataChanged() {
-
     }
 
     @Override

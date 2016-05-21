@@ -13,13 +13,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/activity_padding">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -30,13 +32,35 @@
                 android:layout_weight="0.6"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/activity_inner_margin"
-                    android:text="@string/scene"
-                    android:textColor="@color/text_title_color"
-                    android:textSize="@dimen/text_title_size"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/scene_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_inner_margin"
+                        android:text="@string/scene"
+                        android:textColor="@color/text_title_color"
+                        android:textSize="@dimen/text_title_size"/>
+
+                    <TextView
+                        android:id="@+id/more_scene"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/scene_text"
+                        android:layout_marginBottom="@dimen/activity_inner_margin"
+                        android:layout_marginEnd="@dimen/activity_inner_margin"
+                        android:layout_marginRight="@dimen/activity_inner_margin"
+                        android:layout_toEndOf="@id/scene_text"
+                        android:layout_toRightOf="@id/scene_text"
+                        android:gravity="end"
+                        android:text="@string/more"
+                        android:textColor="@color/text_title_color"
+                        android:textSize="@dimen/text_tips_size"/>
+
+                </RelativeLayout>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/scene_recyclerView"
@@ -53,8 +77,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="0dp"
                     android:layout_marginBottom="@dimen/activity_inner_margin"
+                    android:layout_weight="0.7"
                     android:orientation="vertical">
 
                     <TextView
@@ -74,7 +99,9 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:contentDescription="@string/app_name"
                     android:src="@mipmap/ic_launcher"/>
 
             </LinearLayout>
@@ -83,8 +110,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/activity_margin"
+            android:layout_weight="0.4"
             android:orientation="horizontal">
 
             <LinearLayout

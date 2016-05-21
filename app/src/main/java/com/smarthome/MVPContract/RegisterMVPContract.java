@@ -26,6 +26,11 @@ public interface RegisterMVPContract {
          * 获取密码
          */
         String getPassword();
+
+        /**
+         * 注册成功
+         */
+        void backToLogin();
     }
 
     interface IRegisterPresenter extends IBasePresenter {
@@ -36,12 +41,12 @@ public interface RegisterMVPContract {
         void register();
     }
 
-    interface IRegisterModel extends IBaseModel{
+    interface IRegisterModel extends IBaseModel {
 
         /**
          * 注册
          */
-        RequestCall register(String telephone, String password);
+        RequestCall register(String userName, String telephone, String password);
     }
 
 }

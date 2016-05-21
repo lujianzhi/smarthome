@@ -58,8 +58,7 @@ public class MyApplication extends Application {
         String pkgName = this.getPackageName();
         // 与下方代码中 PushManager.setNotificationBuilder(this, 1, cBuilder)中的第二个参数对应
         CustomPushNotificationBuilder cBuilder = new CustomPushNotificationBuilder(
-                resource.getIdentifier(
-                        "notification_custom_builder", "layout", pkgName),
+                resource.getIdentifier("notification_custom_builder", "layout", pkgName),
                 resource.getIdentifier("notification_icon", "id", pkgName),
                 resource.getIdentifier("notification_title", "id", pkgName),
                 resource.getIdentifier("notification_text", "id", pkgName));

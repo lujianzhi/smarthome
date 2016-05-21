@@ -37,6 +37,11 @@ public class LoginPresenter implements LoginMVPContract.ILoginPresenter {
     }
 
     @Override
+    public void clearData() {
+
+    }
+
+    @Override
     public void verifyUser() {
         loginView.startLoading();
         RequestCall call = loginModel.verifyUser(loginView.getUserName(), loginView.getUserPassword());

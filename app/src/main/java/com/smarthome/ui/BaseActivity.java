@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.smarthome.R;
+import com.smarthome.widget.MyProgressDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,8 +30,8 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     }
 
     protected void init() {
-        initPresenterAndModel();
         initIntentData();
+        initPresenterAndModel();
         initView();
     }
 
@@ -57,10 +58,10 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected void showProgressDialog() {
         if (dialog == null) {
             dialog = new MyProgressDialog(this);
-            dialog.setCancelable(false);
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.show();
         }
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
     }
 
     protected void disMissProgressDialog() {

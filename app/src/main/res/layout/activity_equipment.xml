@@ -11,6 +11,16 @@
         android:layout_height="@dimen/top_height"
         />
 
+    <TextView
+        android:id="@+id/scene_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_inner_margin"
+        android:gravity="center"
+        android:text="@string/equipment"
+        android:textColor="@color/text_title_color"
+        android:textSize="@dimen/text_title_size"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/equipment_recyclerView"
         android:layout_width="match_parent"

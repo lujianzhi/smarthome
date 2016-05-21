@@ -14,6 +14,10 @@ public class Equipment implements Parcelable {
     private String image; // 图片
     private String eqComment;// 备注
     private int isRemind; // 是否提醒 0:不提醒 1:提醒
+    private int userId; // 设备所对应的用户ID
+    private int sceneId; //场景id
+    private Scene scene;    //场景
+    private int type; //0:开关设备  1：温度  2：水 3：电   4:煤气
 
     protected Equipment(Parcel in) {
         id = in.readInt();
@@ -25,6 +29,10 @@ public class Equipment implements Parcelable {
         image = in.readString();
         eqComment = in.readString();
         isRemind = in.readInt();
+        userId = in.readInt();
+        sceneId = in.readInt();
+        scene = in.readParcelable(Scene.class.getClassLoader());
+        type = in.readInt();
     }
 
     public static final Creator<Equipment> CREATOR = new Creator<Equipment>() {
@@ -119,10 +127,53 @@ public class Equipment implements Parcelable {
         this.isRemind = isRemind;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getSceneId() {
+        return sceneId;
+    }
+
+    public void setSceneId(int sceneId) {
+        this.sceneId = sceneId;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public Equipment() {
         super();
         // TODO Auto-generated constructor stub
     }
+
+    @Override
+    public String toString() {
+        return "Equipment [id=" + id + ", name=" + name + ", value=" + value
+                + ", highValue=" + highValue + ", lowValue=" + lowValue
+                + ", state=" + state + ", image=" + image + ", eqComment="
+                + eqComment + ", isRemind=" + isRemind + ", userId=" + userId
+                + ", sceneId=" + sceneId + ", scene=" + scene + "]";
+    }
+
 
     @Override
     public int describeContents() {
@@ -140,5 +191,9 @@ public class Equipment implements Parcelable {
         dest.writeString(image);
         dest.writeString(eqComment);
         dest.writeInt(isRemind);
+        dest.writeInt(userId);
+        dest.writeInt(sceneId);
+        dest.writeParcelable(scene, flags);
+        dest.writeInt(type);
     }
 }

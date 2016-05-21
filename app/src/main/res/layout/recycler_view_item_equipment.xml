@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center_vertical"
-              android:orientation="horizontal"
-              android:padding="@dimen/activity_padding">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin">
 
     <TextView
+        android:id="@+id/equipment_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/activity_inner_margin"
         android:layout_marginStart="@dimen/activity_inner_margin"
         android:text="@string/equipment"
@@ -16,9 +16,15 @@
         android:textSize="@dimen/text_main_size"/>
 
     <RadioGroup
+        android:id="@+id/equipment_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_inner_margin_40"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_inner_margin_40"
         android:orientation="horizontal">
 
@@ -42,4 +48,4 @@
 
     </RadioGroup>
 
-</LinearLayout>
+</RelativeLayout>

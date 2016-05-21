@@ -22,22 +22,14 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <EditText
-            android:id="@+id/user_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableBottom="@drawable/selector_edit_text"
-            android:drawablePadding="@dimen/edit_text_drawable_padding"
-            android:hint="@string/input_phoneNumber"
-            android:inputType="phone"/>
-
-        <EditText
             android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/user_phone"
             android:drawableBottom="@drawable/selector_edit_text"
             android:drawablePadding="@dimen/edit_text_drawable_padding"
-            android:hint="@string/input_name"/>
+            android:hint="@string/input_name"
+            android:maxLines="1"
+            android:singleLine="true"/>
 
         <EditText
             android:id="@+id/user_password"
@@ -47,7 +39,9 @@
             android:drawableBottom="@drawable/selector_edit_text"
             android:drawablePadding="@dimen/edit_text_drawable_padding"
             android:hint="@string/input_password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"

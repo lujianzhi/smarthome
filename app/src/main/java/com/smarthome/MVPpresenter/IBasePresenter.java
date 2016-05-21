@@ -9,4 +9,9 @@ public interface IBasePresenter {
      * 初始化数据
      */
     void initData();
+
+    /**
+     * 清除数据
+     */
+    void clearData();
 }

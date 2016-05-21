@@ -100,11 +100,11 @@
             android:launchMode="standard"/>
 
         <activity
-            android:name=".ui.Equipment"
+            android:name=".ui.EquipmentActivity"
             android:launchMode="standard"/>
 
         <activity
-            android:name=".ui.EquipmentDetail"
+            android:name=".ui.EquipmentDetailActivity"
             android:launchMode="standard"/>
 
         <activity

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/dialog_background"
+              android:orientation="vertical"
+              android:padding="@dimen/activity_horizontal_margin">
+
+    <EditText
+        android:id="@+id/scene_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_inner_margin"
+        android:gravity="center"
+        android:hint="@string/add_new_scene"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/activity_padding">
+
+        <ImageView
+            android:id="@+id/zhuwo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/zhuwo"/>
+
+        <ImageView
+            android:id="@+id/cheku"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="@dimen/activity_inner_margin"
+            android:layout_marginStart="@dimen/activity_inner_margin"
+            android:layout_toEndOf="@id/zhuwo"
+            android:layout_toRightOf="@id/zhuwo"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/cheku"/>
+
+        <ImageView
+            android:id="@+id/keting"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="@dimen/activity_inner_margin"
+            android:layout_marginStart="@dimen/activity_inner_margin"
+            android:layout_toEndOf="@id/cheku"
+            android:layout_toRightOf="@id/cheku"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/keting"/>
+
+        <ImageView
+            android:id="@+id/ciwo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/zhuwo"
+            android:layout_marginTop="@dimen/activity_inner_margin"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ciwo"/>
+
+        <ImageView
+            android:id="@+id/yushi"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/cheku"
+            android:layout_marginLeft="@dimen/activity_inner_margin"
+            android:layout_marginStart="@dimen/activity_inner_margin"
+            android:layout_marginTop="@dimen/activity_inner_margin"
+            android:layout_toEndOf="@id/ciwo"
+            android:layout_toRightOf="@id/ciwo"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/yushi"/>
+
+        <ImageView
+            android:id="@+id/canting"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/keting"
+            android:layout_marginLeft="@dimen/activity_inner_margin"
+            android:layout_marginStart="@dimen/activity_inner_margin"
+            android:layout_marginTop="@dimen/activity_inner_margin"
+            android:layout_toEndOf="@id/yushi"
+            android:layout_toRightOf="@id/yushi"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/canting"/>
+
+        <ImageView
+            android:id="@+id/qita"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/ciwo"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/qita"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_inner_margin"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/save"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/component_height"
+            android:background="@color/button_normal_color"
+            android:text="@string/button_save"
+            android:textColor="@color/button_text_color"/>
+
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/back"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/component_height"
+            android:background="@color/button_normal_color"
+            android:text="@string/button_back"
+            android:textColor="@color/button_text_color"/>
+    </LinearLayout>
+
+</LinearLayout>

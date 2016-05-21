@@ -15,9 +15,9 @@ public class LoginModel implements LoginMVPContract.ILoginModel {
     public RequestCall verifyUser(String userName, String password) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "")
-                .addParams("userName", userName)
-                .addParams("passWord", password)
+                .url(NetConfig.LOCAL + "login_login.action")
+                .addParams("user.userName", userName)
+                .addParams("user.password", password)
                 .build();
     }
 
@@ -29,5 +29,10 @@ public class LoginModel implements LoginMVPContract.ILoginModel {
     @Override
     public String parseJsonMessage(String jsonStr) {
         return MyJsonStrUtils.getMessage(jsonStr);
+    }
+
+    @Override
+    public void clearData() {
+
     }
 }

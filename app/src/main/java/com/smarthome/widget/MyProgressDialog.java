@@ -1,4 +1,4 @@
-package com.smarthome.ui;
+package com.smarthome.widget;
 
 import android.app.Dialog;
 import android.content.Context;

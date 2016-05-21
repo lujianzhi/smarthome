@@ -18,6 +18,7 @@
 
     <!--场景-->
     <string name="scene">场景</string>
+    <string name="more">更多</string>
 
     <!--警告信息-->
     <string name="warn">警告信息</string>
@@ -47,5 +48,18 @@
     <string name="dialog_button_cancel">取消</string>
     <string name="dialog_button_confirm">确定</string>
     <string name="operating">正在操作\.\.\.</string>
+
+    <!--新增场景-->
+    <string name="add_new_scene">添加场景</string>
+    <string name="button_save">保存</string>
+    <string name="button_back">返回</string>
+    <string name="zhuwo">主卧</string>
+    <string name="cheku">车库</string>
+    <string name="keting">客厅</string>
+    <string name="ciwo">次卧</string>
+    <string name="yushi">浴室</string>
+    <string name="canting">餐厅</string>
+    <string name="qita">其他</string>
+    <string name="input_warn">请填写相应信息</string>
 
 </resources>

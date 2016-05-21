@@ -35,7 +35,7 @@ public class RegisterPresenter implements RegisterMVPContract.IRegisterPresenter
     @Override
     public void register() {
         registerView.startLoading();
-        RequestCall call = registerModel.register(registerView.getTelephone(), registerView.getPassword());
+        RequestCall call = registerModel.register(registerView.getUserName(), registerView.getTelephone(), registerView.getPassword());
         Message message = new Message();
         message.what = RegisterPresenter.REGISTER;
         message.obj = call;
@@ -44,6 +44,11 @@ public class RegisterPresenter implements RegisterMVPContract.IRegisterPresenter
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    public void clearData() {
 
     }
 
@@ -62,7 +67,7 @@ public class RegisterPresenter implements RegisterMVPContract.IRegisterPresenter
 
         @Override
         public void handleMessage(Message msg) {
-            final RegisterMVPContract.IRegisterModel mMmodel = mRegisterModel.get();
+            final RegisterMVPContract.IRegisterModel mModel = mRegisterModel.get();
             final RegisterMVPContract.IRegisterView mView = mRegisterView.get();
             final RegisterMVPContract.IRegisterPresenter mPresenter = mRegisterPresenter.get();
 
@@ -79,8 +84,9 @@ public class RegisterPresenter implements RegisterMVPContract.IRegisterPresenter
 
                             @Override
                             public void onResponse(String response) {
-                                ToastUtils.showShortToast(mMmodel.parseJsonMessage(response));
+                                ToastUtils.showShortToast(mModel.parseJsonMessage(response));
                                 mView.stopLoading();
+                                mView.backToLogin();
                             }
                         });
                         break;

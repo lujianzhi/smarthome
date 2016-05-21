@@ -10,6 +10,8 @@ import org.json.JSONObject;
  */
 public class MyJsonStrUtils {
 
+    private static final String TAG = "后台JSON异常";
+
     public static int getCode(String responseStr) {
         int code = -1;
         try {
@@ -17,7 +19,7 @@ public class MyJsonStrUtils {
             if (obj.has("code")) {
                 code = obj.getInt("code");
             } else {
-                ToastUtils.showShortToast(R.string.json_code_error);
+                LogUtils.e(TAG, "json_code格式不正确");
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -33,13 +35,13 @@ public class MyJsonStrUtils {
                 int code = obj.getInt("code");
                 if (code == 0) {
                     // 弹出显示错误信息
-                    ToastUtils.showShortToast(obj.getString("message"));
+                    LogUtils.e(TAG, obj.getString("message"));
                     return "";
                 } else if (code == 1) {
                     if (obj.has("message")) {
                         message = obj.getString("message");
                     } else {
-                        ToastUtils.showShortToast(R.string.json_message_error);
+                        LogUtils.e(TAG, "json_message格式不正确");
                     }
                 }
             } else {

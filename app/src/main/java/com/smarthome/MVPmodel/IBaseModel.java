@@ -14,4 +14,9 @@ public interface IBaseModel {
      * 解析jsonStr的message
      */
     String parseJsonMessage(String jsonStr);
+
+    /**
+     * 清除数据
+     */
+    void clearData();
 }
