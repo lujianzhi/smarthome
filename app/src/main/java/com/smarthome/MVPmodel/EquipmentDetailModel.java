@@ -65,19 +65,4 @@ public class EquipmentDetailModel implements EquipmentDetailMVPContract.IEquipme
     public List<OperationLog> getOperationLogList() {
         return operationLogList;
     }
-
-    @Override
-    public RequestCall changeStatus(String equipmentId, String state) {
-        return OkHttpUtils
-                .post()
-                .url(NetConfig.LOCAL + "equipment_changeState.action")
-                .addParams("equipment.id", equipmentId)
-                .addParams("equipment.state", state)
-                .build();
-    }
-
-    @Override
-    public String parseStatus(String jsonStr) {
-        return MyJsonStrUtils.getMessage(jsonStr);
-    }
 }

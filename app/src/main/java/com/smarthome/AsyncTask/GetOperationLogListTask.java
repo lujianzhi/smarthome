@@ -57,5 +57,6 @@ public class GetOperationLogListTask extends AsyncTask<String, Void, List<Operat
             baseView.notifyDataChanged();
         }
         baseView.stopLoading();
+        this.cancel(false);
     }
 }

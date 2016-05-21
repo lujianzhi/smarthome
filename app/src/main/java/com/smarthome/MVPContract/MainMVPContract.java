@@ -43,12 +43,12 @@ public interface MainMVPContract {
         /**
          * 请求警告信息列表
          */
-        void requestWarnInfoList();
+        void requestWarnInfoList(String type,String page,String rows);
 
         /**
          * 请求日志消息列表
          */
-        void requestLogMessageList();
+        void requestLogMessageList(String type,String page,String rows);
     }
 
     interface IMainModel extends IBaseModel {
@@ -61,12 +61,12 @@ public interface MainMVPContract {
         /**
          * 获取警告信息RequestCall
          */
-        RequestCall getWarnInfoRequestCall();
+        RequestCall getWarnInfoRequestCall(String type,String page,String rows);
 
         /**
          * 获取日志消息RequestCall
          */
-        RequestCall getLogMessageRequestCall();
+        RequestCall getLogMessageRequestCall(String type,String page,String rows);
 
         /**
          * 解析场景列表

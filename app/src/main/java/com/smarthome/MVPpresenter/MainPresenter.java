@@ -48,8 +48,8 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
     }
 
     @Override
-    public void requestWarnInfoList() {
-        mainModel.getWarnInfoRequestCall().execute(new StringCallback() {
+    public void requestWarnInfoList(String type,String page,String rows) {
+        mainModel.getWarnInfoRequestCall(type, page, rows).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -70,8 +70,8 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
     }
 
     @Override
-    public void requestLogMessageList() {
-        mainModel.getLogMessageRequestCall().execute(new StringCallback() {
+    public void requestLogMessageList(String type,String page,String rows) {
+        mainModel.getLogMessageRequestCall(type, page, rows).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());

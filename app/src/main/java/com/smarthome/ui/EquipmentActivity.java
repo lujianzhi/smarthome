@@ -30,6 +30,14 @@ public class EquipmentActivity extends BaseActivity implements EquipmentMVPContr
     private String sceneName;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        initIntentData();
+        equipmentPresenter.clearData();
+        equipmentPresenter.requestEquipmentList(sceneId, "20", "1");
+    }
+
+    @Override
     protected void initIntentData() {
         sceneId = getIntent().getStringExtra(SceneActivity.SCENE_ID);
         sceneName = getIntent().getStringExtra(SceneActivity.SCENE_NAME);
@@ -38,7 +46,6 @@ public class EquipmentActivity extends BaseActivity implements EquipmentMVPContr
     @Override
     protected void initViews() {
         sceneNameTV.setText(sceneName);
-        equipmentPresenter.requestEquipmentList(sceneId, "20", "1");
         equipmentAdapter = new EquipmentAdapter(this, equipmentPresenter);
         equipmentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         equipmentRecyclerView.setAdapter(equipmentAdapter);

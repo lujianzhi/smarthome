@@ -2,40 +2,30 @@ package com.smarthome.AsyncTask;
 
 import android.os.AsyncTask;
 
-import com.smarthome.MVPContract.EquipmentDetailMVPContract;
 import com.smarthome.MVPContract.EquipmentMVPContract;
-import com.smarthome.MVPmodel.IBaseModel;
-import com.smarthome.MVPview.IBaseView;
 
 /***
  * Created by Lawson on 2016/5/20.
  */
 public class StatusChangeTask extends AsyncTask<String, Void, String> {
 
-    private IBaseView baseView;
-    private IBaseModel baseModel;
+    private EquipmentMVPContract.IEquipmentView equipmentView;
+    private EquipmentMVPContract.IEquipmentModel equipmentModel;
 
-    public StatusChangeTask(IBaseView baseView, IBaseModel baseModel) {
-        this.baseView = baseView;
-        this.baseModel = baseModel;
+    public StatusChangeTask(EquipmentMVPContract.IEquipmentView equipmentView, EquipmentMVPContract.IEquipmentModel equipmentModel) {
+        this.equipmentView = equipmentView;
+        this.equipmentModel = equipmentModel;
     }
 
     @Override
     protected String doInBackground(String... params) {
-        if (baseModel instanceof EquipmentMVPContract.IEquipmentModel) {
-            ((EquipmentMVPContract.IEquipmentModel) baseModel).parseStatus(params[0], params[1]);
-            return null;
-        } else {
-            return ((EquipmentDetailMVPContract.IEquipmentDetailModel) baseModel).parseStatus(params[0]);
-        }
+        equipmentModel.parseStatus(params[0], params[1]);
+        return null;
     }
 
     @Override
     protected void onPostExecute(String status) {
-        if (baseView instanceof EquipmentDetailMVPContract.IEquipmentDetailView) {
-            ((EquipmentDetailMVPContract.IEquipmentDetailView) baseView).updateStatus(status);
-        }
-        baseView.notifyDataChanged();
-        baseView.stopLoading();
+        equipmentView.notifyDataChanged();
+        equipmentView.stopLoading();
     }
 }

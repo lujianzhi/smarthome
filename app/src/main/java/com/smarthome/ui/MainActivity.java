@@ -47,8 +47,8 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
 
         mainPresenter.clearData();
         mainPresenter.requestSceneList();
-        mainPresenter.requestWarnInfoList();
-        mainPresenter.requestLogMessageList();
+        mainPresenter.requestWarnInfoList("1", "1", "20");
+        mainPresenter.requestLogMessageList("", "1", "20");
     }
 
     @Override
@@ -62,6 +62,7 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
         warnRecyclerView.setAdapter(warnLogAdapter);
 
         logMessageAdapter = new OperationLogAdapter();
+        logMessageAdapter.setHorizontal(true);
         logMessageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         logMessageRecyclerView.setAdapter(logMessageAdapter);
 

@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.smarthome.MVPContract.EquipmentDetailMVPContract;
 import com.smarthome.MVPmodel.EquipmentDetailModel;
-import com.smarthome.MVPpresenter.EquipmenDetailPresenter;
+import com.smarthome.MVPpresenter.EquipmentDetailPresenter;
 import com.smarthome.R;
 import com.smarthome.adapter.OperationLogAdapter;
 
@@ -28,18 +26,11 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
 
     @BindView(R.id.equipment)
     TextView equipment;
-    @BindView(R.id.equipment_status_on)
-    RadioButton equipmentStatusOn;
-    @BindView(R.id.equipment_status_off)
-    RadioButton equipmentStatusOff;
-    @BindView(R.id.equipment_status)
-    RadioGroup equipmentStatusRG;
     @BindView(R.id.equipment_recyclerView)
     RecyclerView equipmentRecyclerView;
 
     private String equipmentName;
     private String equipmentId;
-    private String equipmentStatus;
     private String sceneId;
 
     private EquipmentDetailMVPContract.IEquipmentDetailPresenter equipmentDetailPresenter;
@@ -51,7 +42,6 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
         Bundle data = getIntent().getExtras();
         equipmentName = data.getString(EquipmentDetailActivity.EQUIPMENT_NAME);
         equipmentId = data.getString(EquipmentDetailActivity.EQUIPMENT_ID);
-        equipmentStatus = data.getString(EquipmentDetailActivity.EQUIPMENT_STATUS);
         sceneId = data.getString(EquipmentDetailActivity.SCENE_ID);
     }
 
@@ -59,31 +49,11 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
     protected void initViews() {
         equipment.setText(equipmentName);
 
-        equipmentDetailPresenter.requestEquipmentDetailList(sceneId, equipmentId, "0", "1", "20");
+        equipmentDetailPresenter.requestEquipmentDetailList(sceneId, equipmentId, "", "1", "20");
         operationLogAdapter = new OperationLogAdapter();
+        operationLogAdapter.setHorizontal(true);
         equipmentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         equipmentRecyclerView.setAdapter(operationLogAdapter);
-        if ("1".equals(equipmentStatus)) {
-            equipmentStatusOn.setChecked(true);
-        } else {
-            equipmentStatusOff.setChecked(true);
-        }
-        equipmentStatusRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                String status = "0";
-                switch (checkedId) {
-                    case R.id.equipment_status_on:
-                        status = "1";
-                        break;
-
-                    case R.id.equipment_status_off:
-                        status = "0";
-                        break;
-                }
-                equipmentDetailPresenter.changeStatus(equipmentId, status);
-            }
-        });
     }
 
     @Override
@@ -98,7 +68,7 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
 
     @Override
     protected void initPresenterAndModel() {
-        equipmentDetailPresenter = new EquipmenDetailPresenter(this, new EquipmentDetailModel());
+        equipmentDetailPresenter = new EquipmentDetailPresenter(this, new EquipmentDetailModel());
     }
 
     @Override
@@ -129,10 +99,5 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
 
     @Override
     public void updateStatus(String status) {
-        if ("1".equals(status)) {
-            equipmentStatusOn.setChecked(true);
-        } else {
-            equipmentStatusOff.setChecked(true);
-        }
     }
 }

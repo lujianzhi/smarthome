@@ -1,7 +1,6 @@
 package com.smarthome.MVPpresenter;
 
 import com.smarthome.AsyncTask.GetOperationLogListTask;
-import com.smarthome.AsyncTask.StatusChangeTask;
 import com.smarthome.MVPContract.EquipmentDetailMVPContract;
 import com.smarthome.entity.OperationLog;
 import com.smarthome.utils.LogUtils;
@@ -16,14 +15,14 @@ import okhttp3.Call;
 /***
  * Created by Lawson on 2016/5/21.
  */
-public class EquipmenDetailPresenter implements EquipmentDetailMVPContract.IEquipmentDetailPresenter {
-    private static final String TAG = EquipmenDetailPresenter.class.getSimpleName();
+public class EquipmentDetailPresenter implements EquipmentDetailMVPContract.IEquipmentDetailPresenter {
+    private static final String TAG = EquipmentDetailPresenter.class.getSimpleName();
 
     private EquipmentDetailMVPContract.IEquipmentDetailView equipmentDetailView;
     private EquipmentDetailMVPContract.IEquipmentDetailModel equipmentDetailModel;
 
-    public EquipmenDetailPresenter(EquipmentDetailMVPContract.IEquipmentDetailView equipmentDetailView,
-                                   EquipmentDetailMVPContract.IEquipmentDetailModel equipmentDetailModel) {
+    public EquipmentDetailPresenter(EquipmentDetailMVPContract.IEquipmentDetailView equipmentDetailView,
+                                    EquipmentDetailMVPContract.IEquipmentDetailModel equipmentDetailModel) {
         this.equipmentDetailView = equipmentDetailView;
         this.equipmentDetailModel = equipmentDetailModel;
     }
@@ -52,6 +51,7 @@ public class EquipmenDetailPresenter implements EquipmentDetailMVPContract.IEqui
                         LogUtils.i(TAG, response);
                         if (1 == MyJsonStrUtils.getCode(response)) {
                             GetOperationLogListTask getEquipmentListTask = new GetOperationLogListTask(equipmentDetailModel, equipmentDetailView);
+                            getEquipmentListTask.setNotifyTag(0);
                             getEquipmentListTask.execute(response);
                         } else {
                             ToastUtils.showShortToast(MyJsonStrUtils.getMessage(response));
@@ -64,22 +64,5 @@ public class EquipmenDetailPresenter implements EquipmentDetailMVPContract.IEqui
     @Override
     public List<OperationLog> getOperationLogList() {
         return equipmentDetailModel.getOperationLogList();
-    }
-
-    @Override
-    public void changeStatus(String equipmentId, String state) {
-        equipmentDetailModel.changeStatus(equipmentId, state).execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e) {
-                LogUtils.e(TAG, e.getMessage());
-            }
-
-            @Override
-            public void onResponse(String response) {
-                LogUtils.i(TAG, response);
-                StatusChangeTask statusChangeTask = new StatusChangeTask(equipmentDetailView, equipmentDetailModel);
-                statusChangeTask.execute(response);
-            }
-        });
     }
 }

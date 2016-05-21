@@ -27,37 +27,6 @@
             android:textColor="@color/text_main_color"
             android:textSize="@dimen/text_title_size"/>
 
-        <RadioGroup
-            android:id="@+id/equipment_status"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_inner_margin_40"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_inner_margin_40"
-            android:layout_weight="0.5"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/equipment_status_on"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/equipment_status_on"
-                android:textColor="@color/text_tips_color"
-                android:textSize="@dimen/text_tips_size"/>
-
-            <RadioButton
-                android:id="@+id/equipment_status_off"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_inner_margin"
-                android:layout_marginStart="@dimen/activity_inner_margin"
-                android:text="@string/equipment_status_off"
-                android:textColor="@color/text_tips_color"
-                android:textSize="@dimen/text_tips_size"/>
-
-        </RadioGroup>
-
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

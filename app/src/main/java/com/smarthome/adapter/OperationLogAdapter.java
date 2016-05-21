@@ -18,6 +18,11 @@ import java.util.List;
 public class OperationLogAdapter extends RecyclerView.Adapter<OperationLogAdapter.MyViewHolder> {
 
     private List<OperationLog> operationLogList = new ArrayList<>();
+    private boolean isHorizontal;
+
+    public void setHorizontal(boolean horizontal) {
+        isHorizontal = horizontal;
+    }
 
     public OperationLogAdapter() {
     }
@@ -28,7 +33,12 @@ public class OperationLogAdapter extends RecyclerView.Adapter<OperationLogAdapte
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item_operation_log, parent, false);
+        View view;
+        if (isHorizontal) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item_operation_log_horizontal, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item_operation_log, parent, false);
+        }
         return new MyViewHolder(view);
     }
 

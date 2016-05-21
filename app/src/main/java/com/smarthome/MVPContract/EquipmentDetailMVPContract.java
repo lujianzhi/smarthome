@@ -30,10 +30,6 @@ public interface EquipmentDetailMVPContract {
          */
         List<OperationLog> getOperationLogList();
 
-        /**
-         * 修改状态
-         */
-        void changeStatus(String equipmentId, String state);
     }
 
     interface IEquipmentDetailModel extends IBaseModel {
@@ -53,15 +49,6 @@ public interface EquipmentDetailMVPContract {
          */
         List<OperationLog> getOperationLogList();
 
-        /**
-         * 修改状态
-         */
-        RequestCall changeStatus(String equipmentId, String state);
-
-        /**
-         * 解析状态
-         */
-        String parseStatus(String jsonStr);
     }
 
 }

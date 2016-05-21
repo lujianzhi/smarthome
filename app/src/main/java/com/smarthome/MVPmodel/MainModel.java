@@ -33,24 +33,24 @@ public class MainModel implements MainMVPContract.IMainModel {
     }
 
     @Override
-    public RequestCall getWarnInfoRequestCall() {
+    public RequestCall getWarnInfoRequestCall(String type, String page, String rows) {
         return OkHttpUtils
                 .post()
                 .url(NetConfig.LOCAL + "operationLog_findByCondition.action")
-                .addParams("logPage.type", "1")
-                .addParams("page", "1")
-                .addParams("rows", "5")
+                .addParams("logPage.type", type)
+                .addParams("page", page)
+                .addParams("rows", rows)
                 .build();
     }
 
     @Override
-    public RequestCall getLogMessageRequestCall() {
+    public RequestCall getLogMessageRequestCall(String type, String page, String rows) {
         return OkHttpUtils
                 .post()
                 .url(NetConfig.LOCAL + "operationLog_findByCondition.action")
-                .addParams("logPage.type", "0")
-                .addParams("page", "1")
-                .addParams("rows", "5")
+                .addParams("logPage.type", type)
+                .addParams("page", page)
+                .addParams("rows", rows)
                 .build();
     }
 
