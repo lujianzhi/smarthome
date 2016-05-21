@@ -36,7 +36,7 @@ public class MyJsonStrUtils {
                 if (code == 0) {
                     // 弹出显示错误信息
                     LogUtils.e(TAG, obj.getString("message"));
-                    return "";
+                    return obj.getString("message");
                 } else if (code == 1) {
                     if (obj.has("message")) {
                         message = obj.getString("message");

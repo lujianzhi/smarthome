@@ -77,7 +77,8 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.MyVi
                 Bundle data = new Bundle();
                 data.putString(EquipmentDetailActivity.EQUIPMENT_NAME, equipment.getName());
                 data.putString(EquipmentDetailActivity.EQUIPMENT_ID, String.valueOf(equipment.getId()));
-                data.putString(EquipmentDetailActivity.EQUIPMENT_STATUS, String.valueOf(equipment.getState()));
+                data.putString(EquipmentDetailActivity.EQUIPMENT_STATUS, String.valueOf(equipment.getIsRemind()));
+                data.putString(EquipmentDetailActivity.EQUIPMENT_COMMENT, equipment.getEqComment());
                 data.putString(EquipmentDetailActivity.SCENE_ID, String.valueOf(equipment.getSceneId()));
                 intent.putExtras(data);
                 context.startActivity(intent);

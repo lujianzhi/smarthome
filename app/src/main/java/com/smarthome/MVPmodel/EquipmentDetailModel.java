@@ -65,4 +65,16 @@ public class EquipmentDetailModel implements EquipmentDetailMVPContract.IEquipme
     public List<OperationLog> getOperationLogList() {
         return operationLogList;
     }
+
+    @Override
+    public RequestCall getEditEquipmentInfoRequestCall(String equipmentId, String equipmentName, String equipmentComment, String status) {
+        return OkHttpUtils
+                .post()
+                .url(NetConfig.LOCAL + "equipment_edit.action")
+                .addParams("equipment.id", equipmentId)
+                .addParams("equipment.name", equipmentName)
+                .addParams("equipment.eqComment", equipmentComment)
+                .addParams("equipment.isRemind", status)
+                .build();
+    }
 }

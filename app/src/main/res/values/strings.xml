@@ -43,6 +43,10 @@
     <string name="equipment_detail_message">门窗打开</string>
     <string name="equipment_status_on">ON</string>
     <string name="equipment_status_off">OFF</string>
+    <string name="equipment_edit">点我修改</string>
+    <string name="equipment_name">设备名称</string>
+    <string name="equipment_comment">设备备注</string>
+    <string name="equipment_warn">是否提醒</string>
 
     <!--对话框-->
     <string name="dialog_button_cancel">取消</string>

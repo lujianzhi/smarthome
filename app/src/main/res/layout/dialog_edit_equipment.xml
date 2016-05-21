@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dialog_background"
+                android:padding="@dimen/activity_horizontal_margin">
+
+    <LinearLayout
+        android:id="@+id/top_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_inner_margin"
+        android:layout_marginStart="@dimen/activity_inner_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equipment_name"
+            android:textColor="@color/text_title_color"
+            android:textSize="@dimen/text_title_size"/>
+
+        <EditText
+            android:id="@+id/equipment_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_inner_margin"
+            android:layout_marginStart="@dimen/activity_inner_margin"
+            android:drawableBottom="@drawable/selector_edit_text"
+            android:hint="@string/equipment_name"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="@dimen/text_tips_size"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_one"
+        android:layout_marginLeft="@dimen/activity_inner_margin"
+        android:layout_marginStart="@dimen/activity_inner_margin"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equipment_comment"
+            android:textColor="@color/text_title_color"
+            android:textSize="@dimen/text_title_size"/>
+
+        <EditText
+            android:id="@+id/equipment_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_inner_margin"
+            android:layout_marginStart="@dimen/activity_inner_margin"
+            android:drawableBottom="@drawable/selector_edit_text"
+            android:hint="@string/equipment_comment"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="@dimen/text_tips_size"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_two"
+        android:layout_marginLeft="@dimen/activity_inner_margin"
+        android:layout_marginStart="@dimen/activity_inner_margin"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equipment_warn"
+            android:textColor="@color/text_title_color"
+            android:textSize="@dimen/text_title_size"/>
+
+        <RadioGroup
+            android:id="@+id/equipment_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_inner_margin"
+            android:layout_marginStart="@dimen/activity_inner_margin"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/equipment_status_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/equipment_status_on"
+                android:textColor="@color/text_tips_color"
+                android:textSize="@dimen/text_tips_size_10"/>
+
+            <RadioButton
+                android:id="@+id/equipment_status_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_inner_margin"
+                android:layout_marginStart="@dimen/activity_inner_margin"
+                android:text="@string/equipment_status_off"
+                android:textColor="@color/text_tips_color"
+                android:textSize="@dimen/text_tips_size"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_three"
+        android:layout_marginBottom="@dimen/activity_margin"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/save"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/component_height"
+            android:background="@color/button_normal_color"
+            android:text="@string/button_save"
+            android:textColor="@color/button_text_color"/>
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/back"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/component_height"
+            android:background="@color/button_normal_color"
+            android:text="@string/button_back"
+            android:textColor="@color/button_text_color"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

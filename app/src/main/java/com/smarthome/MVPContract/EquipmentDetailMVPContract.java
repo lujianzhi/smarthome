@@ -15,7 +15,10 @@ public interface EquipmentDetailMVPContract {
 
     interface IEquipmentDetailView extends IBaseView {
 
-        void updateStatus(String status);
+        /**
+         * 修改设备名和设备备注
+         */
+        void notifyTitle(String equipmentName, String equipmentComment);
     }
 
     interface IEquipmentDetailPresenter extends IBasePresenter {
@@ -29,6 +32,11 @@ public interface EquipmentDetailMVPContract {
          * 获取设备详情列表
          */
         List<OperationLog> getOperationLogList();
+
+        /**
+         * 修改设备信息
+         */
+        void editEquipmentInfo(String equipmentId, String equipmentName, String equipmentComment, String status);
 
     }
 
@@ -49,6 +57,10 @@ public interface EquipmentDetailMVPContract {
          */
         List<OperationLog> getOperationLogList();
 
+        /**
+         * 修改设备信息
+         */
+        RequestCall getEditEquipmentInfoRequestCall(String equipmentId, String equipmentName, String equipmentComment, String status);
     }
 
 }

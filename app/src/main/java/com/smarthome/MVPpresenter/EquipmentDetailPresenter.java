@@ -65,4 +65,23 @@ public class EquipmentDetailPresenter implements EquipmentDetailMVPContract.IEqu
     public List<OperationLog> getOperationLogList() {
         return equipmentDetailModel.getOperationLogList();
     }
+
+    @Override
+    public void editEquipmentInfo(String equipmentId, final String equipmentName, final String equipmentComment, String status) {
+        equipmentDetailModel.getEditEquipmentInfoRequestCall(equipmentId, equipmentName, equipmentComment, status).execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e) {
+                LogUtils.e(TAG, e.getMessage());
+            }
+
+            @Override
+            public void onResponse(String response) {
+                LogUtils.i(TAG, response);
+                if (1 == equipmentDetailModel.parseJsonCode(response)) {
+                    equipmentDetailView.notifyTitle(equipmentName, equipmentComment);
+                }
+                ToastUtils.showShortToast(equipmentDetailModel.parseJsonMessage(response));
+            }
+        });
+    }
 }

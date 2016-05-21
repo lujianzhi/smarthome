@@ -22,10 +22,27 @@
             android:id="@+id/equipment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             android:text="@string/equipment"
-            android:textColor="@color/text_main_color"
+            android:textColor="@color/text_title_color"
             android:textSize="@dimen/text_title_size"/>
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="@color/text_main_color"
+            android:textSize="@dimen/text_tips_size"/>
+
+        <TextView
+            android:id="@+id/edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="@string/equipment_edit"
+            android:textColor="@color/text_main_color"
+            android:textSize="@dimen/text_tips_size"/>
 
     </LinearLayout>
 

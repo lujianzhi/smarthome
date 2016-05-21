@@ -12,6 +12,7 @@ import com.smarthome.MVPmodel.EquipmentDetailModel;
 import com.smarthome.MVPpresenter.EquipmentDetailPresenter;
 import com.smarthome.R;
 import com.smarthome.adapter.OperationLogAdapter;
+import com.smarthome.widget.EditEquipmentDialog;
 
 import butterknife.BindView;
 
@@ -22,16 +23,25 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
     public static final String EQUIPMENT_NAME = "equipment_name";
     public static final String EQUIPMENT_ID = "equipment_id";
     public static final String EQUIPMENT_STATUS = "equipment_status";
+    public static final String EQUIPMENT_COMMENT = "equipment_comment";
     public static final String SCENE_ID = "scene_id";
 
     @BindView(R.id.equipment)
     TextView equipment;
     @BindView(R.id.equipment_recyclerView)
     RecyclerView equipmentRecyclerView;
+    @BindView(R.id.comment)
+    TextView comment;
+    @BindView(R.id.edit)
+    TextView edit;
 
     private String equipmentName;
     private String equipmentId;
+    private String equipmentComment;
+    private String equipmentStatus;
     private String sceneId;
+
+    private EditEquipmentDialog editDialog;
 
     private EquipmentDetailMVPContract.IEquipmentDetailPresenter equipmentDetailPresenter;
 
@@ -40,14 +50,18 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
     @Override
     protected void initIntentData() {
         Bundle data = getIntent().getExtras();
-        equipmentName = data.getString(EquipmentDetailActivity.EQUIPMENT_NAME);
-        equipmentId = data.getString(EquipmentDetailActivity.EQUIPMENT_ID);
+        equipmentName = data.getString(EquipmentDetailActivity.EQUIPMENT_NAME, "");
+        equipmentId = data.getString(EquipmentDetailActivity.EQUIPMENT_ID, "");
+        equipmentComment = data.getString(EquipmentDetailActivity.EQUIPMENT_COMMENT, "");
+        equipmentStatus = data.getString(EquipmentDetailActivity.EQUIPMENT_STATUS, "0");
         sceneId = data.getString(EquipmentDetailActivity.SCENE_ID);
     }
 
     @Override
     protected void initViews() {
         equipment.setText(equipmentName);
+        comment.setText(equipmentComment);
+        edit.setOnClickListener(this);
 
         equipmentDetailPresenter.requestEquipmentDetailList(sceneId, equipmentId, "", "1", "20");
         operationLogAdapter = new OperationLogAdapter();
@@ -73,7 +87,24 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.edit:
+                showEditDialog();
+                break;
+        }
+    }
 
+    private void showEditDialog() {
+        editDialog = new EditEquipmentDialog(
+                this,
+                equipmentDetailPresenter,
+                equipmentId,
+                equipmentName,
+                equipmentComment,
+                equipmentStatus);
+        editDialog.setCancelable(false);
+        editDialog.setCanceledOnTouchOutside(false);
+        editDialog.show();
     }
 
     @Override
@@ -98,6 +129,9 @@ public class EquipmentDetailActivity extends BaseActivity implements EquipmentDe
     }
 
     @Override
-    public void updateStatus(String status) {
+    public void notifyTitle(String equipmentName, String equipmentComment) {
+        editDialog.dismiss();
+        equipment.setText(equipmentName);
+        comment.setText(equipmentComment);
     }
 }
