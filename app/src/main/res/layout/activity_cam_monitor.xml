@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/include_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_height"/>
+
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/exit_cam_monitor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/component_height"
+        android:background="@color/button_normal_color"
+        android:text="@string/exit_cam_monitor"
+        android:textColor="@color/button_text_color"/>
+
+    <com.smarthome.cammonitor.view.CamMonitorView
+        android:id="@+id/cmView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawSelectorOnTop="false"/>
+
+</LinearLayout>

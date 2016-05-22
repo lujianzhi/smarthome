@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smarthome.MVPContract.MainMVPContract;
@@ -38,6 +39,8 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
     TextView warn;
     @BindView(R.id.log)
     TextView log;
+    @BindView(R.id.cam_monitor)
+    ImageView camMonitor;
 
     private MainMVPContract.IMainPresenter mainPresenter;
 
@@ -73,6 +76,7 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
         moreScene.setOnClickListener(this);
         warn.setOnClickListener(this);
         log.setOnClickListener(this);
+        camMonitor.setOnClickListener(this);
 
     }
 
@@ -103,6 +107,9 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
                 break;
             case R.id.log:
                 startActivity(new Intent(this, LogActivity.class));
+                break;
+            case R.id.cam_monitor:
+                startActivity(new Intent(this, CamMonitorActivity.class));
                 break;
         }
     }

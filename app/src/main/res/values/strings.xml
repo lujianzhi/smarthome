@@ -70,4 +70,8 @@
     <!--搜索-->
     <string name="search">开始搜索</string>
 
+    <!--视频监控-->
+    <string name="cam_monitor">视频监控</string>
+    <string name="exit_cam_monitor">退出监控</string>
+
 </resources>

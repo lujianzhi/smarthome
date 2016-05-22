@@ -122,6 +122,10 @@
         <activity
             android:name=".ui.SceneActivity"
             android:launchMode="standard"/>
+
+        <activity
+            android:name=".ui.CamMonitorActivity"
+            android:launchMode="standard"/>
     </application>
 
 </manifest>
