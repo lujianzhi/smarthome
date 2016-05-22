@@ -41,6 +41,8 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
     TextView log;
     @BindView(R.id.cam_monitor)
     ImageView camMonitor;
+    @BindView(R.id.temperature)
+    TextView temperature;
 
     private MainMVPContract.IMainPresenter mainPresenter;
 
@@ -56,6 +58,7 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
         mainPresenter.requestSceneList();
         mainPresenter.requestWarnInfoList("1", "1", "20");
         mainPresenter.requestLogMessageList("", "1", "20");
+        mainPresenter.requestTemperature();
     }
 
     @Override
@@ -149,5 +152,10 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
     public void setLogInfoList(List<OperationLog> logInfoList) {
         logMessageAdapter.setOperationLogList(logInfoList);
         logMessageAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setTemperature(String temperatureStr) {
+        temperature.setText(temperatureStr);
     }
 }

@@ -93,6 +93,27 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
     }
 
     @Override
+    public void requestTemperature() {
+        mainModel.getTemperatureRequestCall().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e) {
+                LogUtils.e(TAG, e.getMessage());
+                mainView.stopLoading();
+            }
+
+            @Override
+            public void onResponse(String response) {
+                LogUtils.i(TAG, response);
+                if (1 == mainModel.parseJsonCode(response)) {
+                    mainView.setTemperature(MyJsonStrUtils.getMessage(response));
+                } else {
+                    ToastUtils.showShortToast(MyJsonStrUtils.getMessage(response));
+                }
+            }
+        });
+    }
+
+    @Override
     public void initData() {
 
     }

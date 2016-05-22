@@ -55,6 +55,14 @@ public class MainModel implements MainMVPContract.IMainModel {
     }
 
     @Override
+    public RequestCall getTemperatureRequestCall() {
+        return OkHttpUtils
+                .post()
+                .url(NetConfig.LOCAL + "equipment_findTemperature.action")
+                .build();
+    }
+
+    @Override
     public void parseSceneList(String jsonStr) {
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();

@@ -31,6 +31,11 @@ public interface MainMVPContract {
          */
         void setLogInfoList(List<OperationLog> logInfoList);
 
+        /**
+         * 设置室内气温
+         */
+        void setTemperature(String temperatureStr);
+
     }
 
     interface IMainPresenter extends IBasePresenter {
@@ -43,12 +48,17 @@ public interface MainMVPContract {
         /**
          * 请求警告信息列表
          */
-        void requestWarnInfoList(String type,String page,String rows);
+        void requestWarnInfoList(String type, String page, String rows);
 
         /**
          * 请求日志消息列表
          */
-        void requestLogMessageList(String type,String page,String rows);
+        void requestLogMessageList(String type, String page, String rows);
+
+        /**
+         * 请求气温
+         */
+        void requestTemperature();
     }
 
     interface IMainModel extends IBaseModel {
@@ -61,12 +71,17 @@ public interface MainMVPContract {
         /**
          * 获取警告信息RequestCall
          */
-        RequestCall getWarnInfoRequestCall(String type,String page,String rows);
+        RequestCall getWarnInfoRequestCall(String type, String page, String rows);
 
         /**
          * 获取日志消息RequestCall
          */
-        RequestCall getLogMessageRequestCall(String type,String page,String rows);
+        RequestCall getLogMessageRequestCall(String type, String page, String rows);
+
+        /**
+         * 获取气温RequestCall
+         */
+        RequestCall getTemperatureRequestCall();
 
         /**
          * 解析场景列表
