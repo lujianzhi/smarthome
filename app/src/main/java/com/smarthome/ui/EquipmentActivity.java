@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smarthome.MVPContract.EquipmentMVPContract;
@@ -11,6 +12,7 @@ import com.smarthome.MVPmodel.EquipmentModel;
 import com.smarthome.MVPpresenter.EquipmentPresenter;
 import com.smarthome.R;
 import com.smarthome.adapter.EquipmentAdapter;
+import com.smarthome.widget.AddEquipmentDialog;
 
 import butterknife.BindView;
 
@@ -22,12 +24,16 @@ public class EquipmentActivity extends BaseActivity implements EquipmentMVPContr
     RecyclerView equipmentRecyclerView;
     @BindView(R.id.scene_name)
     TextView sceneNameTV;
+    @BindView(R.id.add)
+    ImageView add;
 
     private EquipmentAdapter equipmentAdapter;
 
     private EquipmentMVPContract.IEquipmentPresenter equipmentPresenter;
     private String sceneId;
     private String sceneName;
+
+    private AddEquipmentDialog addEquipmentDialog;
 
     @Override
     protected void onResume() {
@@ -49,6 +55,8 @@ public class EquipmentActivity extends BaseActivity implements EquipmentMVPContr
         equipmentAdapter = new EquipmentAdapter(this, equipmentPresenter);
         equipmentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         equipmentRecyclerView.setAdapter(equipmentAdapter);
+
+        add.setOnClickListener(this);
     }
 
     @Override
@@ -68,7 +76,18 @@ public class EquipmentActivity extends BaseActivity implements EquipmentMVPContr
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.add:
+                showAddEquipmentDialog();
+                break;
+        }
+    }
 
+    private void showAddEquipmentDialog() {
+        addEquipmentDialog = new AddEquipmentDialog(this, equipmentPresenter, sceneId);
+        addEquipmentDialog.setCancelable(false);
+        addEquipmentDialog.setCanceledOnTouchOutside(false);
+        addEquipmentDialog.show();
     }
 
     @Override
@@ -90,5 +109,11 @@ public class EquipmentActivity extends BaseActivity implements EquipmentMVPContr
     @Override
     public Context getContext() {
         return this;
+    }
+
+    @Override
+    public void executeOnResume() {
+        addEquipmentDialog.dismiss();
+        onResume();
     }
 }

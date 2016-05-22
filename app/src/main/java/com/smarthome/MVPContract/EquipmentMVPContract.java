@@ -15,6 +15,10 @@ public interface EquipmentMVPContract {
 
     interface IEquipmentView extends IBaseView {
 
+        /**
+         * 执行onResume方法
+         */
+        void executeOnResume();
     }
 
     interface IEquipmentPresenter extends IBasePresenter {
@@ -33,6 +37,11 @@ public interface EquipmentMVPContract {
          * 修改状态
          */
         void changeStatus(String equipmentId, String state, int position);
+
+        /**
+         * 添加设备
+         */
+        void requestAddEquipment(String sceneId, String name, String equipmentComment, String isRemind);
     }
 
     interface IEquipmentModel extends IBaseModel {
@@ -61,6 +70,11 @@ public interface EquipmentMVPContract {
          * 解析状态
          */
         void parseStatus(String jsonStr, String position);
+
+        /**
+         * 获取添加设备的RequestCall
+         */
+        RequestCall getAddEquipmentRequestCall(String sceneId, String name, String equipmentComment, String isRemind);
     }
 
 }

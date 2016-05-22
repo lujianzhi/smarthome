@@ -1,7 +1,6 @@
 package com.smarthome.MVPpresenter;
 
 import com.smarthome.AsyncTask.GetEquipmentListTask;
-import com.smarthome.AsyncTask.StatusChangeTask;
 import com.smarthome.MVPContract.EquipmentMVPContract;
 import com.smarthome.entity.Equipment;
 import com.smarthome.utils.LogUtils;
@@ -40,7 +39,7 @@ public class EquipmentPresenter implements EquipmentMVPContract.IEquipmentPresen
 
     @Override
     public void requestEquipmentList(String sceneId, String rows, String page) {
-        equipmentView.stopLoading();
+        equipmentView.startLoading();
         equipmentModel.getEquipmentListRequestCall(sceneId, rows, page).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
@@ -68,6 +67,7 @@ public class EquipmentPresenter implements EquipmentMVPContract.IEquipmentPresen
 
     @Override
     public void changeStatus(final String equipmentId, final String state, final int position) {
+        ToastUtils.showShortToast("请求了");
         equipmentModel.changeStatus(equipmentId, state).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
@@ -77,8 +77,29 @@ public class EquipmentPresenter implements EquipmentMVPContract.IEquipmentPresen
             @Override
             public void onResponse(String response) {
                 LogUtils.i(TAG, response);
-                StatusChangeTask statusChangeTask = new StatusChangeTask(equipmentView, equipmentModel);
-                statusChangeTask.execute(response, String.valueOf(position));
+                if (1 == MyJsonStrUtils.getCode(response)) {
+                    equipmentModel.parseStatus(response, String.valueOf(position));
+                    equipmentView.notifyDataChanged();
+
+                }
+            }
+        });
+    }
+
+    @Override
+    public void requestAddEquipment(String sceneId, String name, String equipmentComment, String isRemind) {
+        equipmentModel.getAddEquipmentRequestCall(sceneId, name, equipmentComment, isRemind).execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e) {
+                LogUtils.e(TAG, e.getMessage());
+                equipmentView.stopLoading();
+            }
+
+            @Override
+            public void onResponse(String response) {
+                LogUtils.i(TAG, response);
+                equipmentView.executeOnResume();
+                equipmentView.stopLoading();
             }
         });
     }

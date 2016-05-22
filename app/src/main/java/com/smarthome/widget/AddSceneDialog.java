@@ -21,15 +21,6 @@ public class AddSceneDialog extends Dialog implements View.OnClickListener {
 
     private View mainView;
 
-    private ImageView zhuwo;
-    private ImageView cheku;
-    private ImageView keting;
-    private ImageView ciwo;
-    private ImageView yushi;
-    private ImageView canting;
-    private ImageView qita;
-    private ButtonRectangle save;
-    private ButtonRectangle back;
     private EditText sceneName;
 
     private String sceneImgName;
@@ -47,15 +38,15 @@ public class AddSceneDialog extends Dialog implements View.OnClickListener {
     }
 
     private void initViews() {
-        zhuwo = (ImageView) mainView.findViewById(R.id.zhuwo);
-        cheku = (ImageView) mainView.findViewById(R.id.cheku);
-        keting = (ImageView) mainView.findViewById(R.id.keting);
-        ciwo = (ImageView) mainView.findViewById(R.id.ciwo);
-        yushi = (ImageView) mainView.findViewById(R.id.yushi);
-        canting = (ImageView) mainView.findViewById(R.id.canting);
-        qita = (ImageView) mainView.findViewById(R.id.qita);
-        save = (ButtonRectangle) mainView.findViewById(R.id.save);
-        back = (ButtonRectangle) mainView.findViewById(R.id.back);
+        ImageView zhuwo = (ImageView) mainView.findViewById(R.id.zhuwo);
+        ImageView cheku = (ImageView) mainView.findViewById(R.id.cheku);
+        ImageView keting = (ImageView) mainView.findViewById(R.id.keting);
+        ImageView ciwo = (ImageView) mainView.findViewById(R.id.ciwo);
+        ImageView yushi = (ImageView) mainView.findViewById(R.id.yushi);
+        ImageView canting = (ImageView) mainView.findViewById(R.id.canting);
+        ImageView qita = (ImageView) mainView.findViewById(R.id.qita);
+        ButtonRectangle save = (ButtonRectangle) mainView.findViewById(R.id.save);
+        ButtonRectangle back = (ButtonRectangle) mainView.findViewById(R.id.back);
 
         sceneName = (EditText) mainView.findViewById(R.id.scene_name);
         sceneName.addTextChangedListener(new TextWatcher() {

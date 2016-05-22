@@ -18,6 +18,9 @@ public class MyJsonStrUtils {
             JSONObject obj = new JSONObject(responseStr);
             if (obj.has("code")) {
                 code = obj.getInt("code");
+                if (0 == code) {
+                    LogUtils.e(TAG, responseStr);
+                }
             } else {
                 LogUtils.e(TAG, "json_code格式不正确");
             }

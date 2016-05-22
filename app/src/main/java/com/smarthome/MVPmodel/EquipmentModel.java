@@ -78,4 +78,16 @@ public class EquipmentModel implements EquipmentMVPContract.IEquipmentModel {
     public void parseStatus(String jsonStr, String position) {
         equipmentList.get(Integer.valueOf(position)).setState(Integer.valueOf(MyJsonStrUtils.getMessage(jsonStr)));
     }
+
+    @Override
+    public RequestCall getAddEquipmentRequestCall(String sceneId, String name, String equipmentComment, String isRemind) {
+        return OkHttpUtils
+                .post()
+                .url(NetConfig.LOCAL + "equipment_add.action")
+                .addParams("equipment.sceneId", sceneId)
+                .addParams("equipment.name", name)
+                .addParams("equipment.eqComment", equipmentComment)
+                .addParams("equipment.isRemind", isRemind)
+                .build();
+    }
 }

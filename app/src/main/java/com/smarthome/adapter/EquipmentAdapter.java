@@ -7,8 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.smarthome.MVPContract.EquipmentMVPContract;
@@ -49,24 +48,28 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.MyVi
 
         holder.equipment_name.setText(equipment.getName());
         if (equipment.getState() == 1) {
-            holder.equipment_status_on.setChecked(true);
+            holder.equipment_status_on.setBackgroundColor(context.getResources().getColor(R.color.button_pressed_color));
+            holder.equipment_status_off.setBackgroundColor(context.getResources().getColor(R.color.button_text_color));
         } else {
-            holder.equipment_status_off.setChecked(true);
+            holder.equipment_status_on.setBackgroundColor(context.getResources().getColor(R.color.button_text_color));
+            holder.equipment_status_off.setBackgroundColor(context.getResources().getColor(R.color.button_pressed_color));
         }
 
-        holder.equipment_status.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        holder.equipment_status_on.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                String status = "0";
-                switch (checkedId) {
-                    case R.id.equipment_status_on:
-                        status = "1";
-                        break;
-                    case R.id.equipment_status_off:
-                        status = "0";
-                        break;
-                }
-                equipmentPresenter.changeStatus(String.valueOf(equipment.getId()), status, holder.getAdapterPosition());
+            public void onClick(View v) {
+                equipmentPresenter.changeStatus(String.valueOf(equipment.getId()), "1", holder.getAdapterPosition());
+                holder.equipment_status_on.setBackgroundColor(context.getResources().getColor(R.color.button_pressed_color));
+                holder.equipment_status_off.setBackgroundColor(context.getResources().getColor(R.color.button_text_color));
+            }
+        });
+
+        holder.equipment_status_off.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                equipmentPresenter.changeStatus(String.valueOf(equipment.getId()), "0", holder.getAdapterPosition());
+                holder.equipment_status_on.setBackgroundColor(context.getResources().getColor(R.color.button_text_color));
+                holder.equipment_status_off.setBackgroundColor(context.getResources().getColor(R.color.button_pressed_color));
             }
         });
 
@@ -95,16 +98,16 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView equipment_name;
-        RadioGroup equipment_status;
-        RadioButton equipment_status_on;
-        RadioButton equipment_status_off;
+        Button equipment_status_on;
+        Button equipment_status_off;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
             equipment_name = (TextView) itemView.findViewById(R.id.equipment_name);
-            equipment_status = (RadioGroup) itemView.findViewById(R.id.equipment_status);
-            equipment_status_on = (RadioButton) itemView.findViewById(R.id.equipment_status_on);
-            equipment_status_off = (RadioButton) itemView.findViewById(R.id.equipment_status_off);
+            equipment_status_on = (Button) itemView.findViewById(R.id.equipment_status_on);
+            equipment_status_off = (Button) itemView.findViewById(R.id.equipment_status_off);
         }
+
     }
 }

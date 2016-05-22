@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.smarthome.MVPContract.EquipmentDetailMVPContract;
+import com.smarthome.MVPpresenter.IBasePresenter;
 import com.smarthome.R;
 
 /***
@@ -17,26 +18,26 @@ import com.smarthome.R;
  */
 public class EditEquipmentDialog extends Dialog implements View.OnClickListener {
 
-    private View mainView;
+    protected View mainView;
 
-    private EditText equipment_name;
-    private EditText equipment_comment;
-    private RadioButton equipment_status_on;
-    private RadioButton equipment_status_off;
+    protected EditText equipment_name;
+    protected EditText equipment_comment;
+    protected RadioButton equipment_status_on;
+    protected RadioButton equipment_status_off;
 
-    private String status = "0";
-    private String equipmentId;
+    protected String status = "0";
+    protected String equipmentId;
 
-    private EquipmentDetailMVPContract.IEquipmentDetailPresenter equipmentDetailPresenter;
+    protected IBasePresenter basePresenter;
 
     public EditEquipmentDialog(Context context,
-                               EquipmentDetailMVPContract.IEquipmentDetailPresenter equipmentDetailPresenter,
+                               IBasePresenter basePresenter,
                                String equipmentId,
                                String equipmentName,
                                String equipmentComment,
                                String equipmentStatus) {
         super(context, R.style.emptyDialog);
-        this.equipmentDetailPresenter = equipmentDetailPresenter;
+        this.basePresenter = basePresenter;
         this.equipmentId = equipmentId;
         mainView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_equipment, null);
         setContentView(mainView);
@@ -50,7 +51,7 @@ public class EditEquipmentDialog extends Dialog implements View.OnClickListener 
         }
     }
 
-    private void initViews() {
+    protected void initViews() {
         equipment_name = (EditText) mainView.findViewById(R.id.equipment_name);
         equipment_comment = (EditText) mainView.findViewById(R.id.equipment_comment);
         RadioGroup equipment_status = (RadioGroup) mainView.findViewById(R.id.equipment_status);
@@ -80,7 +81,7 @@ public class EditEquipmentDialog extends Dialog implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.save:
-                equipmentDetailPresenter.editEquipmentInfo(equipmentId,
+                ((EquipmentDetailMVPContract.IEquipmentDetailPresenter) basePresenter).editEquipmentInfo(equipmentId,
                         equipment_name.getText().toString(),
                         equipment_comment.getText().toString(),
                         status);

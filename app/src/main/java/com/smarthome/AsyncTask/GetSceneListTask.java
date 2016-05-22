@@ -44,7 +44,7 @@ public class GetSceneListTask extends AsyncTask<String, Void, List<Scene>> {
     protected void onPostExecute(List<Scene> scenes) {
         if (baseView instanceof MainMVPContract.IMainView) {
             ((MainMVPContract.IMainView) baseView).setSceneList(scenes);
-        } else if (baseView instanceof SceneMVPContract.ISceneModel) {
+        } else if (baseView instanceof SceneMVPContract.ISceneView) {
             ((SceneMVPContract.ISceneView) baseView).setSceneList(scenes);
         } else {
             ((LogMVPContract.ILogView) baseView).setSceneList(scenes);

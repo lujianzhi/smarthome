@@ -15,10 +15,10 @@
         android:textColor="@color/text_main_color"
         android:textSize="@dimen/text_main_size"/>
 
-    <RadioGroup
+    <LinearLayout
         android:id="@+id/equipment_status"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
@@ -28,24 +28,26 @@
         android:layout_marginStart="@dimen/activity_inner_margin_40"
         android:orientation="horizontal">
 
-        <RadioButton
+        <Button
             android:id="@+id/equipment_status_on"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/component_height"
             android:layout_height="wrap_content"
+            android:background="@color/button_pressed_color"
+            android:contentDescription="@string/app_name"
             android:text="@string/equipment_status_on"
-            android:textColor="@color/text_tips_color"
-            android:textSize="@dimen/text_tips_size"/>
+            android:textColor="@color/text_tips_color"/>
 
-        <RadioButton
+        <Button
             android:id="@+id/equipment_status_off"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/component_height"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_inner_margin"
             android:layout_marginStart="@dimen/activity_inner_margin"
+            android:background="@color/button_text_color"
+            android:contentDescription="@string/app_name"
             android:text="@string/equipment_status_off"
-            android:textColor="@color/text_tips_color"
-            android:textSize="@dimen/text_tips_size"/>
+            android:textColor="@color/text_tips_color"/>
 
-    </RadioGroup>
+    </LinearLayout>
 
 </RelativeLayout>
