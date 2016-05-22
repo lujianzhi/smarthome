@@ -43,6 +43,12 @@ public class LogModel implements LogMVPContract.ILogModel {
             Scene scene = gson.fromJson(element, Scene.class);
             sceneList.add(scene);
         }
+
+        Scene top = new Scene();
+        top.setId(0);
+        top.setSceneName("所有");
+        sceneList.add(0, top);
+
     }
 
     @Override
@@ -69,6 +75,12 @@ public class LogModel implements LogMVPContract.ILogModel {
             Equipment equipment = gson.fromJson(element, Equipment.class);
             equipmentList.add(equipment);
         }
+
+        Equipment top = new Equipment();
+        top.setId(0);
+        top.setName("所有");
+        equipmentList.add(0, top);
+
     }
 
     @Override
@@ -111,6 +123,7 @@ public class LogModel implements LogMVPContract.ILogModel {
             OperationLog operationLog = gson.fromJson(element, OperationLog.class);
             operationLogList.add(operationLog);
         }
+
     }
 
     @Override
