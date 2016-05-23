@@ -114,7 +114,6 @@ public class LogModel implements LogMVPContract.ILogModel {
 
     @Override
     public void parseOperationLogList(String jsonStr) {
-        operationLogList.clear();
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
         JsonArray jsonArray = parser.parse(parseJsonMessage(jsonStr)).getAsJsonArray();
@@ -143,5 +142,6 @@ public class LogModel implements LogMVPContract.ILogModel {
 
     @Override
     public void clearData() {
+        operationLogList.clear();
     }
 }

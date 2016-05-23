@@ -79,11 +79,18 @@
             android:text="@string/search"
             android:textColor="@color/button_text_color"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/log_recyclerView"
+        <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+            android:id="@+id/bgaRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_inner_margin"/>
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/log_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/activity_inner_margin"/>
+        </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+
 
     </LinearLayout>
 

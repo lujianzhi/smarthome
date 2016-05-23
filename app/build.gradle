@@ -46,4 +46,6 @@ dependencies {
     compile files('src/main/jniLibs/pushservice-4.6.2.39.jar')
     compile files('libs/pushservice-4.6.2.39.jar')
     compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.4'
 }

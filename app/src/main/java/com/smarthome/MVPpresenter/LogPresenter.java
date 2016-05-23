@@ -4,8 +4,11 @@ import com.smarthome.AsyncTask.GetEquipmentListTask;
 import com.smarthome.AsyncTask.GetOperationLogListTask;
 import com.smarthome.AsyncTask.GetSceneListTask;
 import com.smarthome.MVPContract.LogMVPContract;
+import com.smarthome.entity.OperationLog;
 import com.smarthome.utils.LogUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.util.List;
 
 import okhttp3.Call;
 
@@ -98,6 +101,11 @@ public class LogPresenter implements LogMVPContract.ILogPresenter {
                 getOperationLogListTask.execute(response);
             }
         });
+    }
+
+    @Override
+    public List<OperationLog> getOperationLog() {
+        return logModel.getOperationLogList();
     }
 
     @Override

@@ -60,6 +60,11 @@ public interface LogMVPContract {
          */
         void startSearch(String startTime, String endTime, String sceneId, String equipmentId, String type, String page, String rows);
 
+        /**
+         * 获取搜索内容
+         */
+        List<OperationLog> getOperationLog();
+
     }
 
     interface ILogModel extends IBaseModel {

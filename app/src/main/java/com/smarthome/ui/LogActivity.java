@@ -27,11 +27,14 @@ import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
+import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
+import cn.bingoogolapple.refreshlayout.BGARefreshViewHolder;
 
 /***
  * Created by Lawson on 2016/5/18.
  */
-public class LogActivity extends BaseActivity implements LogMVPContract.ILogView {
+public class LogActivity extends BaseActivity implements LogMVPContract.ILogView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
     @BindView(R.id.start_time)
     Button startTime;
@@ -45,12 +48,15 @@ public class LogActivity extends BaseActivity implements LogMVPContract.ILogView
     ButtonRectangle search;
     @BindView(R.id.log_recyclerView)
     RecyclerView logRecyclerView;
+    @BindView(R.id.bgaRefreshLayout)
+    BGARefreshLayout bgaRefreshLayout;
 
     protected LogMVPContract.ILogPresenter logPresenter;
 
     protected OperationLogAdapter operationLogAdapter;
     protected SceneSpinnerAdapter sceneSpinnerAdapter;
     protected EquipmentSpinnerAdapter equipmentSpinnerAdapter;
+    protected LinearLayoutManager mLayoutManager;
 
     protected String sceneId = "";
     protected String equipmentId = "";
@@ -100,9 +106,16 @@ public class LogActivity extends BaseActivity implements LogMVPContract.ILogView
             }
         });
 
+        bgaRefreshLayout.setDelegate(this);
+        // 设置下拉刷新和上拉加载更多的风格     参数1：应用程序上下文，参数2：是否具有上拉加载更多功能
+        BGARefreshViewHolder refreshViewHolder = new BGANormalRefreshViewHolder(this, true);
+        // 设置下拉刷新和上拉加载更多的风格
+        bgaRefreshLayout.setRefreshViewHolder(refreshViewHolder);
+
         operationLogAdapter = new OperationLogAdapter();
         operationLogAdapter.setHorizontal(true);
-        logRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mLayoutManager = new LinearLayoutManager(this);
+        logRecyclerView.setLayoutManager(mLayoutManager);
         logRecyclerView.setAdapter(operationLogAdapter);
 
         startTime.setOnClickListener(this);
@@ -135,13 +148,14 @@ public class LogActivity extends BaseActivity implements LogMVPContract.ILogView
                 showDataPickerDialog(endTime);
                 break;
             case R.id.search:
+                logPresenter.clearData();
                 startSearch(startTime.getText().toString(),
                         endTime.getText().toString(),
                         sceneId,
                         equipmentId,
                         String.valueOf(getNotifyTag()),
                         "1",
-                        "20");
+                        "100");
                 break;
         }
     }
@@ -215,5 +229,35 @@ public class LogActivity extends BaseActivity implements LogMVPContract.ILogView
     @Override
     public int getNotifyTag() {
         return 0;
+    }
+
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+        logPresenter.clearData();
+        startSearch(startTime.getText().toString(),
+                endTime.getText().toString(),
+                sceneId,
+                equipmentId,
+                String.valueOf(getNotifyTag()),
+                "1",
+                "100");
+        bgaRefreshLayout.endRefreshing();
+    }
+
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+//        String size = String.valueOf(logPresenter.getOperationLog().size() - 5);
+//        String count = String.valueOf(Integer.parseInt(size.substring(0, size.length() - 1)) + 1);
+//        LogUtils.i("页数 : " + count);
+//        ToastUtils.showShortToast("请求了 : " + count);
+//
+//        startSearch(startTime.getText().toString(),
+//                endTime.getText().toString(),
+//                sceneId,
+//                equipmentId,
+//                String.valueOf(getNotifyTag()),
+//                count,
+//                "10");
+        return true;
     }
 }
