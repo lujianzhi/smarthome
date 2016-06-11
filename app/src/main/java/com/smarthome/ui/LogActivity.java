@@ -181,11 +181,13 @@ public class LogActivity extends BaseActivity implements LogMVPContract.ILogView
     }
 
     protected void judgeDate(String startTimeDate, String endTimeDate) {
-        int startInt = Integer.parseInt(startTimeDate.replace("-", ""));
-        int endInt = Integer.parseInt(endTimeDate.replace("-", ""));
-        if (startInt > endInt) {
-            ToastUtils.showShortToast(R.string.judge_time);
-            endTime.setText(startTimeDate);
+        if (!"".equals(startTimeDate) && !"".equals(endTimeDate)) {
+            int startInt = Integer.parseInt(startTimeDate.replace("-", ""));
+            int endInt = Integer.parseInt(endTimeDate.replace("-", ""));
+            if (startInt > endInt) {
+                ToastUtils.showShortToast(R.string.judge_time);
+                endTime.setText(startTimeDate);
+            }
         }
     }
 
