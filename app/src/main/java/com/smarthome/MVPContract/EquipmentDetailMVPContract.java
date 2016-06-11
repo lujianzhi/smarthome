@@ -1,5 +1,7 @@
 package com.smarthome.MVPContract;
 
+import android.content.Context;
+
 import com.smarthome.MVPmodel.IBaseModel;
 import com.smarthome.MVPpresenter.IBasePresenter;
 import com.smarthome.MVPview.IBaseView;
@@ -45,7 +47,7 @@ public interface EquipmentDetailMVPContract {
         /**
          * 返回设备详情列表的RequestCall
          */
-        RequestCall getEquipmentDetailRequestCall(String sceneId, String eqId, String type, String page, String rows);
+        RequestCall getEquipmentDetailRequestCall(Context context, String sceneId, String eqId, String type, String page, String rows);
 
         /**
          * 解析设备详情列表
@@ -60,7 +62,7 @@ public interface EquipmentDetailMVPContract {
         /**
          * 修改设备信息
          */
-        RequestCall getEditEquipmentInfoRequestCall(String equipmentId, String equipmentName, String equipmentComment, String status);
+        RequestCall getEditEquipmentInfoRequestCall(Context context,String equipmentId, String equipmentName, String equipmentComment, String status);
     }
 
 }

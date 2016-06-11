@@ -1,5 +1,7 @@
 package com.smarthome.ui;
 
+import android.content.Context;
+
 import com.smarthome.R;
 
 /***
@@ -15,5 +17,10 @@ public class MessageActivity extends LogActivity {
     @Override
     public int getNotifyTag() {
         return 1;
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 }

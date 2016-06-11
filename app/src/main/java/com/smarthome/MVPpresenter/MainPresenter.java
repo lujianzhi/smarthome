@@ -1,5 +1,7 @@
 package com.smarthome.MVPpresenter;
 
+import android.content.Context;
+
 import com.smarthome.AsyncTask.GetOperationLogListTask;
 import com.smarthome.AsyncTask.GetSceneListTask;
 import com.smarthome.MVPContract.MainMVPContract;
@@ -28,7 +30,7 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
     @Override
     public void requestSceneList() {
         mainView.startLoading();
-        mainModel.getSceneRequestCall().execute(new StringCallback() {
+        mainModel.getSceneRequestCall(mainView.getContext()).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -49,7 +51,7 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
 
     @Override
     public void requestWarnInfoList(String type,String page,String rows) {
-        mainModel.getWarnInfoRequestCall(type, page, rows).execute(new StringCallback() {
+        mainModel.getWarnInfoRequestCall(mainView.getContext(), type, page, rows).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -71,7 +73,7 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
 
     @Override
     public void requestLogMessageList(String type,String page,String rows) {
-        mainModel.getLogMessageRequestCall(type, page, rows).execute(new StringCallback() {
+        mainModel.getLogMessageRequestCall(mainView.getContext(), type, page, rows).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -94,7 +96,7 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
 
     @Override
     public void requestTemperature() {
-        mainModel.getTemperatureRequestCall().execute(new StringCallback() {
+        mainModel.getTemperatureRequestCall(mainView.getContext()).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -121,6 +123,11 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
     @Override
     public void clearData() {
         mainModel.clearData();
+    }
+
+    @Override
+    public Context getContext() {
+        return mainView.getContext();
     }
 
 }

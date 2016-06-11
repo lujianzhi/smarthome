@@ -1,5 +1,7 @@
 package com.smarthome.MVPpresenter;
 
+import android.content.Context;
+
 import com.smarthome.MVPContract.CamMonitorMVPContract;
 
 /***
@@ -24,6 +26,11 @@ public class CamMonitorPresenter implements CamMonitorMVPContract.ICamMonitorPre
     @Override
     public void clearData() {
 
+    }
+
+    @Override
+    public Context getContext() {
+        return null;
     }
 
     @Override

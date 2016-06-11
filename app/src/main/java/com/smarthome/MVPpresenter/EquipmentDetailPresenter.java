@@ -1,5 +1,7 @@
 package com.smarthome.MVPpresenter;
 
+import android.content.Context;
+
 import com.smarthome.AsyncTask.GetOperationLogListTask;
 import com.smarthome.MVPContract.EquipmentDetailMVPContract;
 import com.smarthome.entity.OperationLog;
@@ -37,8 +39,13 @@ public class EquipmentDetailPresenter implements EquipmentDetailMVPContract.IEqu
     }
 
     @Override
+    public Context getContext() {
+        return equipmentDetailView.getContext();
+    }
+
+    @Override
     public void requestEquipmentDetailList(String sceneId, String eqId, String type, String page, String rows) {
-        equipmentDetailModel.getEquipmentDetailRequestCall(sceneId, eqId, type, page, rows)
+        equipmentDetailModel.getEquipmentDetailRequestCall(equipmentDetailView.getContext(), sceneId, eqId, type, page, rows)
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e) {
@@ -68,7 +75,7 @@ public class EquipmentDetailPresenter implements EquipmentDetailMVPContract.IEqu
 
     @Override
     public void editEquipmentInfo(String equipmentId, final String equipmentName, final String equipmentComment, String status) {
-        equipmentDetailModel.getEditEquipmentInfoRequestCall(equipmentId, equipmentName, equipmentComment, status).execute(new StringCallback() {
+        equipmentDetailModel.getEditEquipmentInfoRequestCall(equipmentDetailView.getContext(), equipmentId, equipmentName, equipmentComment, status).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());

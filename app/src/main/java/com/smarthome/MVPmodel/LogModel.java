@@ -1,5 +1,7 @@
 package com.smarthome.MVPmodel;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -26,10 +28,10 @@ public class LogModel implements LogMVPContract.ILogModel {
     private List<OperationLog> operationLogList = new ArrayList<>();
 
     @Override
-    public RequestCall getAllSceneRequestCall() {
+    public RequestCall getAllSceneRequestCall(Context context) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "scene_findAll.action")
+                .url(NetConfig.getUrl(context) + "scene_findAll.action")
                 .build();
     }
 
@@ -57,10 +59,10 @@ public class LogModel implements LogMVPContract.ILogModel {
     }
 
     @Override
-    public RequestCall getAllEquipmentRequestCall() {
+    public RequestCall getAllEquipmentRequestCall(Context context) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "equipment_findAll.action")
+                .url(NetConfig.getUrl(context) + "equipment_findAll.action")
                 .build();
     }
 
@@ -89,19 +91,19 @@ public class LogModel implements LogMVPContract.ILogModel {
     }
 
     @Override
-    public RequestCall getAppointedEquipmentRequestCall(String sceneId) {
+    public RequestCall getAppointedEquipmentRequestCall(Context context, String sceneId) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "equipment_findBySceneId.action")
+                .url(NetConfig.getUrl(context) + "equipment_findBySceneId.action")
                 .addParams("sceneId", sceneId)
                 .build();
     }
 
     @Override
-    public RequestCall getSearchRequestCall(String startTime, String endTime, String sceneId, String equipmentId, String type, String page, String rows) {
+    public RequestCall getSearchRequestCall(Context context, String startTime, String endTime, String sceneId, String equipmentId, String type, String page, String rows) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "operationLog_findByCondition.action")
+                .url(NetConfig.getUrl(context) + "operationLog_findByCondition.action")
                 .addParams("logPage.sceneId", sceneId)
                 .addParams("logPage.eqId", equipmentId)
                 .addParams("logPage.startDate", startTime)

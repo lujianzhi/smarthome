@@ -1,5 +1,7 @@
 package com.smarthome.MVPContract;
 
+import android.content.Context;
+
 import com.smarthome.MVPmodel.IBaseModel;
 import com.smarthome.MVPpresenter.IBasePresenter;
 import com.smarthome.MVPview.IBaseView;
@@ -66,22 +68,22 @@ public interface MainMVPContract {
         /**
          * 获取场景RequestCall
          */
-        RequestCall getSceneRequestCall();
+        RequestCall getSceneRequestCall(Context context);
 
         /**
          * 获取警告信息RequestCall
          */
-        RequestCall getWarnInfoRequestCall(String type, String page, String rows);
+        RequestCall getWarnInfoRequestCall(Context context, String type, String page, String rows);
 
         /**
          * 获取日志消息RequestCall
          */
-        RequestCall getLogMessageRequestCall(String type, String page, String rows);
+        RequestCall getLogMessageRequestCall(Context context, String type, String page, String rows);
 
         /**
          * 获取气温RequestCall
          */
-        RequestCall getTemperatureRequestCall();
+        RequestCall getTemperatureRequestCall(Context context);
 
         /**
          * 解析场景列表

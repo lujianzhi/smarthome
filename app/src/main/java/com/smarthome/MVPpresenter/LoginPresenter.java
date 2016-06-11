@@ -1,5 +1,7 @@
 package com.smarthome.MVPpresenter;
 
+import android.content.Context;
+
 import com.smarthome.MVPContract.LoginMVPContract;
 import com.smarthome.utils.LogUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -32,9 +34,14 @@ public class LoginPresenter implements LoginMVPContract.ILoginPresenter {
     }
 
     @Override
+    public Context getContext() {
+        return loginView.getContext();
+    }
+
+    @Override
     public void verifyUser() {
         loginView.startLoading();
-        loginModel.verifyUser(loginView.getUserName(), loginView.getUserPassword()).execute(new StringCallback() {
+        loginModel.verifyUser(loginView.getContext(), loginView.getUserName(), loginView.getUserPassword()).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 loginView.stopLoading();

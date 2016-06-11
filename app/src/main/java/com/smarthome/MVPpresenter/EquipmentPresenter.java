@@ -1,5 +1,7 @@
 package com.smarthome.MVPpresenter;
 
+import android.content.Context;
+
 import com.smarthome.AsyncTask.GetEquipmentListTask;
 import com.smarthome.MVPContract.EquipmentMVPContract;
 import com.smarthome.entity.Equipment;
@@ -38,9 +40,14 @@ public class EquipmentPresenter implements EquipmentMVPContract.IEquipmentPresen
     }
 
     @Override
+    public Context getContext() {
+        return equipmentView.getContext();
+    }
+
+    @Override
     public void requestEquipmentList(String sceneId, String rows, String page) {
         equipmentView.startLoading();
-        equipmentModel.getEquipmentListRequestCall(sceneId, rows, page).execute(new StringCallback() {
+        equipmentModel.getEquipmentListRequestCall(equipmentView.getContext(), sceneId, rows, page).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -67,8 +74,7 @@ public class EquipmentPresenter implements EquipmentMVPContract.IEquipmentPresen
 
     @Override
     public void changeStatus(final String equipmentId, final String state, final int position) {
-        ToastUtils.showShortToast("请求了");
-        equipmentModel.changeStatus(equipmentId, state).execute(new StringCallback() {
+        equipmentModel.changeStatus(equipmentView.getContext(), equipmentId, state).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -88,7 +94,7 @@ public class EquipmentPresenter implements EquipmentMVPContract.IEquipmentPresen
 
     @Override
     public void requestAddEquipment(String sceneId, String name, String equipmentComment, String isRemind) {
-        equipmentModel.getAddEquipmentRequestCall(sceneId, name, equipmentComment, isRemind).execute(new StringCallback() {
+        equipmentModel.getAddEquipmentRequestCall(equipmentView.getContext(), sceneId, name, equipmentComment, isRemind).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());

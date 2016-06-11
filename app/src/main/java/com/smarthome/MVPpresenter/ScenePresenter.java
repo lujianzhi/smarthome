@@ -1,5 +1,7 @@
 package com.smarthome.MVPpresenter;
 
+import android.content.Context;
+
 import com.smarthome.AsyncTask.GetSceneListTask;
 import com.smarthome.MVPContract.SceneMVPContract;
 import com.smarthome.utils.LogUtils;
@@ -26,7 +28,7 @@ public class ScenePresenter implements SceneMVPContract.IScenePresenter {
     @Override
     public void requestSceneList() {
         sceneView.startLoading();
-        sceneModel.getSceneListRequestCall().execute(new StringCallback() {
+        sceneModel.getSceneListRequestCall(sceneView.getContext()).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -49,7 +51,7 @@ public class ScenePresenter implements SceneMVPContract.IScenePresenter {
     @Override
     public void requestAddScene(String sceneName, String sceneImg) {
         sceneView.stopLoading();
-        sceneModel.getAddSceneRequestCall(sceneName, sceneImg).execute(new StringCallback() {
+        sceneModel.getAddSceneRequestCall(sceneView.getContext(), sceneName, sceneImg).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());
@@ -72,5 +74,10 @@ public class ScenePresenter implements SceneMVPContract.IScenePresenter {
     @Override
     public void clearData() {
         sceneModel.clearData();
+    }
+
+    @Override
+    public Context getContext() {
+        return sceneView.getContext();
     }
 }

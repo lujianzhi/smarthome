@@ -1,5 +1,7 @@
 package com.smarthome.MVPContract;
 
+import android.content.Context;
+
 import com.smarthome.MVPmodel.IBaseModel;
 import com.smarthome.MVPpresenter.IBasePresenter;
 import com.smarthome.MVPview.IBaseView;
@@ -46,7 +48,7 @@ public interface LoginMVPContract {
         /**
          * 验证用户
          */
-        RequestCall verifyUser(String userName, String password);
+        RequestCall verifyUser(Context context, String userName, String password);
 
     }
 

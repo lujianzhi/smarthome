@@ -1,5 +1,7 @@
 package com.smarthome.MVPmodel;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -37,10 +39,10 @@ public class EquipmentModel implements EquipmentMVPContract.IEquipmentModel {
     }
 
     @Override
-    public RequestCall getEquipmentListRequestCall(String sceneId, String rows, String page) {
+    public RequestCall getEquipmentListRequestCall(Context context, String sceneId, String rows, String page) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "equipment_findByPage.action")
+                .url(NetConfig.getUrl(context) + "equipment_findByPage.action")
                 .addParams("sceneId", sceneId)
                 .addParams("rows", rows)
                 .addParams("page", page)
@@ -65,10 +67,10 @@ public class EquipmentModel implements EquipmentMVPContract.IEquipmentModel {
     }
 
     @Override
-    public RequestCall changeStatus(String equipmentId, String state) {
+    public RequestCall changeStatus(Context context, String equipmentId, String state) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "equipment_changeState.action")
+                .url(NetConfig.getUrl(context) + "equipment_changeState.action")
                 .addParams("equipment.id", equipmentId)
                 .addParams("equipment.state", state)
                 .build();
@@ -80,10 +82,10 @@ public class EquipmentModel implements EquipmentMVPContract.IEquipmentModel {
     }
 
     @Override
-    public RequestCall getAddEquipmentRequestCall(String sceneId, String name, String equipmentComment, String isRemind) {
+    public RequestCall getAddEquipmentRequestCall(Context context, String sceneId, String name, String equipmentComment, String isRemind) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "equipment_add.action")
+                .url(NetConfig.getUrl(context) + "equipment_add.action")
                 .addParams("equipment.sceneId", sceneId)
                 .addParams("equipment.name", name)
                 .addParams("equipment.eqComment", equipmentComment)

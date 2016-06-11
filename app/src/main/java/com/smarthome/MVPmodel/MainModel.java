@@ -1,5 +1,7 @@
 package com.smarthome.MVPmodel;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -25,18 +27,18 @@ public class MainModel implements MainMVPContract.IMainModel {
     private List<OperationLog> logInfoList = new ArrayList<>();
 
     @Override
-    public RequestCall getSceneRequestCall() {
+    public RequestCall getSceneRequestCall(Context context) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "scene_findAll.action")
+                .url(NetConfig.getUrl(context) + "scene_findAll.action")
                 .build();
     }
 
     @Override
-    public RequestCall getWarnInfoRequestCall(String type, String page, String rows) {
+    public RequestCall getWarnInfoRequestCall(Context context, String type, String page, String rows) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "operationLog_findByCondition.action")
+                .url(NetConfig.getUrl(context) + "operationLog_findByCondition.action")
                 .addParams("logPage.type", type)
                 .addParams("page", page)
                 .addParams("rows", rows)
@@ -44,10 +46,10 @@ public class MainModel implements MainMVPContract.IMainModel {
     }
 
     @Override
-    public RequestCall getLogMessageRequestCall(String type, String page, String rows) {
+    public RequestCall getLogMessageRequestCall(Context context, String type, String page, String rows) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "operationLog_findByCondition.action")
+                .url(NetConfig.getUrl(context) + "operationLog_findByCondition.action")
                 .addParams("logPage.type", type)
                 .addParams("page", page)
                 .addParams("rows", rows)
@@ -55,10 +57,10 @@ public class MainModel implements MainMVPContract.IMainModel {
     }
 
     @Override
-    public RequestCall getTemperatureRequestCall() {
+    public RequestCall getTemperatureRequestCall(Context context) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "equipment_findTemperature.action")
+                .url(NetConfig.getUrl(context) + "equipment_findTemperature.action")
                 .build();
     }
 

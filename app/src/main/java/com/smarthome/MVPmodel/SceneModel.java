@@ -1,5 +1,7 @@
 package com.smarthome.MVPmodel;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -22,10 +24,10 @@ public class SceneModel implements SceneMVPContract.ISceneModel {
     private List<Scene> sceneList = new ArrayList<>();
 
     @Override
-    public RequestCall getSceneListRequestCall() {
+    public RequestCall getSceneListRequestCall(Context context) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "scene_findAll.action")
+                .url(NetConfig.getUrl(context) + "scene_findAll.action")
                 .build();
     }
 
@@ -47,10 +49,10 @@ public class SceneModel implements SceneMVPContract.ISceneModel {
     }
 
     @Override
-    public RequestCall getAddSceneRequestCall(String sceneName, String sceneImg) {
+    public RequestCall getAddSceneRequestCall(Context context, String sceneName, String sceneImg) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "scene_add.action")
+                .url(NetConfig.getUrl(context) + "scene_add.action")
                 .addParams("scene.sceneName", sceneName)
                 .addParams("scene.sceneImg", sceneImg)
                 .build();

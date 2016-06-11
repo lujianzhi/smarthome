@@ -1,5 +1,7 @@
 package com.smarthome.MVPmodel;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -37,10 +39,10 @@ public class EquipmentDetailModel implements EquipmentDetailMVPContract.IEquipme
     }
 
     @Override
-    public RequestCall getEquipmentDetailRequestCall(String sceneId, String eqId, String type, String page, String rows) {
+    public RequestCall getEquipmentDetailRequestCall(Context context, String sceneId, String eqId, String type, String page, String rows) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "operationLog_findByCondition.action")
+                .url(NetConfig.getUrl(context) + "operationLog_findByCondition.action")
                 .addParams("logPage.sceneId", sceneId)
                 .addParams("logPage.eqId", eqId)
                 .addParams("logPage.type", type)
@@ -67,7 +69,7 @@ public class EquipmentDetailModel implements EquipmentDetailMVPContract.IEquipme
     }
 
     @Override
-    public RequestCall getEditEquipmentInfoRequestCall(String equipmentId, String equipmentName, String equipmentComment, String status) {
+    public RequestCall getEditEquipmentInfoRequestCall(Context context,String equipmentId, String equipmentName, String equipmentComment, String status) {
         return OkHttpUtils
                 .post()
                 .url(NetConfig.LOCAL + "equipment_edit.action")

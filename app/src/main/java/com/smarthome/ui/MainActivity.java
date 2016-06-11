@@ -2,6 +2,7 @@ package com.smarthome.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.smarthome.adapter.OperationLogAdapter;
 import com.smarthome.adapter.SceneAdapter;
 import com.smarthome.entity.OperationLog;
 import com.smarthome.entity.Scene;
+import com.smarthome.receiver.TemperatureReceiver;
 
 import java.util.List;
 
@@ -50,6 +52,9 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
     private OperationLogAdapter warnLogAdapter;
     private OperationLogAdapter logMessageAdapter;
 
+    private TemperatureReceiver temperatureReceiver;
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -59,10 +64,21 @@ public class MainActivity extends BaseActivity implements MainMVPContract.IMainV
         mainPresenter.requestWarnInfoList("1", "1", "20");
         mainPresenter.requestLogMessageList("", "1", "20");
         mainPresenter.requestTemperature();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_TIME_TICK);
+        registerReceiver(temperatureReceiver, intentFilter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(temperatureReceiver);
     }
 
     @Override
     protected void initViews() {
+        temperatureReceiver = new TemperatureReceiver(mainPresenter);
+
         sceneAdapter = new SceneAdapter(this);
         sceneRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         sceneRecyclerView.setAdapter(sceneAdapter);

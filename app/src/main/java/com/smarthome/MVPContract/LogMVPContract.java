@@ -1,5 +1,7 @@
 package com.smarthome.MVPContract;
 
+import android.content.Context;
+
 import com.smarthome.MVPmodel.IBaseModel;
 import com.smarthome.MVPpresenter.IBasePresenter;
 import com.smarthome.MVPview.IBaseView;
@@ -72,7 +74,7 @@ public interface LogMVPContract {
         /**
          * 获取全部场景的RequestCall
          */
-        RequestCall getAllSceneRequestCall();
+        RequestCall getAllSceneRequestCall(Context context);
 
         /**
          * 解析全部场景
@@ -87,7 +89,7 @@ public interface LogMVPContract {
         /**
          * 获取全部设备的RequestCall
          */
-        RequestCall getAllEquipmentRequestCall();
+        RequestCall getAllEquipmentRequestCall(Context context);
 
         /**
          * 解析设备列表
@@ -102,12 +104,12 @@ public interface LogMVPContract {
         /**
          * 获取相应场景的设备
          */
-        RequestCall getAppointedEquipmentRequestCall(String sceneId);
+        RequestCall getAppointedEquipmentRequestCall(Context context, String sceneId);
 
         /**
          * 获取搜索结果
          */
-        RequestCall getSearchRequestCall(String startTime, String endTime, String sceneId, String equipmentId, String type, String page, String rows);
+        RequestCall getSearchRequestCall(Context context, String startTime, String endTime, String sceneId, String equipmentId, String type, String page, String rows);
 
         /**
          * 解析搜索结果

@@ -1,5 +1,7 @@
 package com.smarthome.MVPContract;
 
+import android.content.Context;
+
 import com.smarthome.MVPmodel.IBaseModel;
 import com.smarthome.MVPpresenter.IBasePresenter;
 import com.smarthome.MVPview.IBaseView;
@@ -46,7 +48,7 @@ public interface RegisterMVPContract {
         /**
          * 注册
          */
-        RequestCall register(String userName, String telephone, String password);
+        RequestCall register(Context context, String userName, String telephone, String password);
     }
 
 }

@@ -73,5 +73,4 @@ public class MyApplication extends Application {
         PushManager.setNotificationBuilder(this, 1, cBuilder);
 
     }
-
 }

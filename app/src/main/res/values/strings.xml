@@ -2,6 +2,7 @@
     <string name="app_name">SmartHome</string>
 
     <!-- 网络相关 -->
+    <string name="ip_config">192.168.1.105</string>
     <string name="json_code_error">json_code格式不正确</string>
     <string name="json_message_error">json_message格式不正确</string>
 

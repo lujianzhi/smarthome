@@ -1,9 +1,10 @@
 package com.smarthome.MVPpresenter;
 
+import android.content.Context;
+
 import com.smarthome.MVPContract.RegisterMVPContract;
 import com.smarthome.utils.LogUtils;
 import com.smarthome.utils.MyJsonStrUtils;
-import com.smarthome.utils.ToastUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import okhttp3.Call;
@@ -26,7 +27,9 @@ public class RegisterPresenter implements RegisterMVPContract.IRegisterPresenter
     @Override
     public void register() {
         registerView.startLoading();
-        registerModel.register(registerView.getUserName(),
+        registerModel.register(
+                registerView.getContext(),
+                registerView.getUserName(),
                 registerView.getTelephone(),
                 registerView.getPassword())
                 .execute(new StringCallback() {
@@ -56,5 +59,10 @@ public class RegisterPresenter implements RegisterMVPContract.IRegisterPresenter
     @Override
     public void clearData() {
 
+    }
+
+    @Override
+    public Context getContext() {
+        return registerView.getContext();
     }
 }

@@ -1,5 +1,7 @@
 package com.smarthome.MVPmodel;
 
+import android.content.Context;
+
 import com.smarthome.MVPContract.RegisterMVPContract;
 import com.smarthome.config.NetConfig;
 import com.smarthome.utils.MyJsonStrUtils;
@@ -11,10 +13,10 @@ import com.zhy.http.okhttp.request.RequestCall;
  */
 public class RegisterModel implements RegisterMVPContract.IRegisterModel {
     @Override
-    public RequestCall register(String userName, String telephone, String password) {
+    public RequestCall register(Context context, String userName, String telephone, String password) {
         return OkHttpUtils
                 .post()
-                .url(NetConfig.LOCAL + "login_register.action")
+                .url(NetConfig.getUrl(context) + "login_register.action")
                 .addParams("user.userName", userName)
                 .addParams("user.telephone", telephone)
                 .addParams("user.password", password)

@@ -1,5 +1,7 @@
 package com.smarthome.MVPContract;
 
+import android.content.Context;
+
 import com.smarthome.MVPmodel.IBaseModel;
 import com.smarthome.MVPpresenter.IBasePresenter;
 import com.smarthome.MVPview.IBaseView;
@@ -45,7 +47,7 @@ public interface SceneMVPContract {
         /**
          * 获取场景列表RequestCall
          */
-        RequestCall getSceneListRequestCall();
+        RequestCall getSceneListRequestCall(Context context);
 
         /**
          * 获取场景列表
@@ -60,7 +62,7 @@ public interface SceneMVPContract {
         /**
          * 添加场景
          */
-        RequestCall getAddSceneRequestCall(String sceneName, String sceneImg);
+        RequestCall getAddSceneRequestCall(Context context, String sceneName, String sceneImg);
 
     }
 }

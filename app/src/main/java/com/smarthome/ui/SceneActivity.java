@@ -100,7 +100,7 @@ public class SceneActivity extends BaseActivity implements SceneMVPContract.ISce
 
     @Override
     public Context getContext() {
-        return null;
+        return this;
     }
 
     @Override
