@@ -8,6 +8,8 @@ import com.smarthome.entity.OperationLog;
 import com.smarthome.utils.LogUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.Call;
@@ -86,7 +88,7 @@ public class LogPresenter implements LogMVPContract.ILogPresenter {
     @Override
     public void startSearch(String startTime, String endTime, String sceneId, String equipmentId, String type, String page, String rows) {
         logView.startLoading();
-        logModel.getSearchRequestCall(startTime, endTime, sceneId, equipmentId, type, page, rows).execute(new StringCallback() {
+        logModel.getSearchRequestCall(startTime + " 00:00:00", endTime + " 23:59:59", sceneId, equipmentId, type, page, rows).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {
                 LogUtils.e(TAG, e.getMessage());

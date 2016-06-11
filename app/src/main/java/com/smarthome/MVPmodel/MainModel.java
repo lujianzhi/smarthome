@@ -114,6 +114,16 @@ public class MainModel implements MainMVPContract.IMainModel {
     }
 
     @Override
+    public void clearLogMessageList() {
+        logInfoList.clear();
+    }
+
+    @Override
+    public void clearWarmInfoList() {
+        warnInfoList.clear();
+    }
+
+    @Override
     public int parseJsonCode(String jsonStr) {
         return MyJsonStrUtils.getCode(jsonStr);
     }

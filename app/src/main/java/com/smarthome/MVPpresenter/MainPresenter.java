@@ -61,7 +61,7 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
                 LogUtils.i(TAG, response);
                 if (1 == mainModel.parseJsonCode(response)) {
                     GetOperationLogListTask getOperationLogListTask = new GetOperationLogListTask(mainModel, mainView);
-                    getOperationLogListTask.setNotifyTag(0);
+                    getOperationLogListTask.setNotifyTag(1);
                     getOperationLogListTask.execute(response);
                 }
                 mainView.stopLoading();
@@ -83,7 +83,7 @@ public class MainPresenter implements MainMVPContract.IMainPresenter {
                 LogUtils.i(TAG, response);
                 if (1 == mainModel.parseJsonCode(response)) {
                     GetOperationLogListTask getOperationLogListTask = new GetOperationLogListTask(mainModel, mainView);
-                    getOperationLogListTask.setNotifyTag(1);
+                    getOperationLogListTask.setNotifyTag(0);
                     getOperationLogListTask.execute(response);
                 } else {
                     ToastUtils.showShortToast(MyJsonStrUtils.getMessage(response));

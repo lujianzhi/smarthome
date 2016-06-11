@@ -67,7 +67,6 @@ public class EquipmentPresenter implements EquipmentMVPContract.IEquipmentPresen
 
     @Override
     public void changeStatus(final String equipmentId, final String state, final int position) {
-        ToastUtils.showShortToast("请求了");
         equipmentModel.changeStatus(equipmentId, state).execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e) {

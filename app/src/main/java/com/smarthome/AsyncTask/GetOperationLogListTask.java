@@ -34,8 +34,15 @@ public class GetOperationLogListTask extends AsyncTask<String, Void, List<Operat
             LogUtils.i("解析日志消息列表的线程 : " + Thread.currentThread().getName());
         }
         if (baseModel instanceof MainMVPContract.IMainModel) {
-            ((MainMVPContract.IMainModel) baseModel).parseWarnInfoList(params[0]);
-            return ((MainMVPContract.IMainModel) baseModel).getWarnInfoList();
+            if (notifyTag == 1) {
+                ((MainMVPContract.IMainModel) baseModel).clearWarmInfoList();
+                ((MainMVPContract.IMainModel) baseModel).parseWarnInfoList(params[0]);
+                return ((MainMVPContract.IMainModel) baseModel).getWarnInfoList();
+            } else {
+                ((MainMVPContract.IMainModel) baseModel).clearLogMessageList();
+                ((MainMVPContract.IMainModel) baseModel).parseLogMessageList(params[0]);
+                return ((MainMVPContract.IMainModel) baseModel).getLogMessageList();
+            }
         } else if (baseModel instanceof LogMVPContract.ILogModel) {
             ((LogMVPContract.ILogModel) baseModel).parseOperationLogList(params[0]);
             return ((LogMVPContract.ILogModel) baseModel).getOperationLogList();

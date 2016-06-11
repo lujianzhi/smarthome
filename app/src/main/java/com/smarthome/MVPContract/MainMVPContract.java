@@ -113,6 +113,16 @@ public interface MainMVPContract {
          */
         List<OperationLog> getLogMessageList();
 
+        /**
+         * 清除日志消息
+         */
+        void clearLogMessageList();
+
+        /**
+         * 清除警告消息
+         */
+        void clearWarmInfoList();
+
     }
 
 }
